@@ -83,6 +83,7 @@ Cần agent có shell (Claude Code / Codex / Cowork) để render và tự nhìn
 
 | File | Đọc khi |
 |---|---|
+| `references/center-worker.md` | **Claude làm Center, Codex/GPT làm Worker:** phân quyền, hộp thư `watch-tasks.ps1`, cách viết lệnh việc cho GPT, vòng critic |
 | `references/setup-and-studio.md` | **Bắt đầu project:** cài đặt, khởi tạo thư mục phim, bộ công cụ, lệnh ffmpeg kiểm tra, bảng bẫy đã gặp thật |
 | `references/prompt-patterns.md` | Viết prompt: one-liner (chỉ test engine), thương hiệu (asset thật), tham chiếu, spec XML (một hình không cắt), brief đạo diễn qua đêm, prompt critic |
 | `references/prior-art.md` | Repo nào lấy gì; 7 con đường sản xuất; 3 giai đoạn nghiệm thu; so chi phí |
@@ -97,7 +98,8 @@ Cần agent có shell (Claude Code / Codex / Cowork) để render và tự nhìn
 | `templates/` | brief, director-brief-8, style-guide, shotlist, review, timeline mẫu |
 | `lib/motion.js` | spring, track, indicator, swapAlpha, frameT, loopT, rng, kf, pulse, camera 2.5D |
 | `scripts/render.mjs` | Render pipe ffmpeg, `--sub` blur, `--range`, `--stills`, `--sheet`, `--strip`, `--verify` |
-| `scripts/beats.py` · `sfx.mjs` · `beat_grid.py` · `qa_video.sh` | Đo beat nhạc · tổng hợp SFX/nền · lưới BPM↔fps · QA MP4 |
+| `scripts/center/` · `templates/center/` | watch-tasks.ps1, setup.ps1 · AGENTS.md cho Worker, mẫu TASK |
+| `scripts/beats.py` · `sfx.mjs` · `beat_grid.py` · `qa.mjs` (đa nền tảng) · `qa_video.sh` | Đo beat nhạc · tổng hợp SFX/nền · lưới BPM↔fps · QA MP4 |
 | `examples/minimal/` | Phim 6 s "một hình không cắt" + cues.json, đã qua verify, critic 3 lỗi, loop seam, blur |
 
 Thư mục mỗi phim: `CLAUDE.md · AGENTS.md · docs/ (brief, style_guide, shotlist, review_log) · refs/ · assets/ · lib/ · index.html · render.mjs · out/`. Lệnh khởi tạo ở `references/setup-and-studio.md`.
