@@ -60,7 +60,10 @@ Luật cứng:
 
 ## Determinism (mọi renderer)
 
-Cấm `Date.now()`, `performance.now()`, timer, `requestAnimationFrame`, CSS transition/keyframes, `Math.random()` không seed, tải mạng lúc render, `repeat: -1`, tích phân từng khung. Mọi thứ là hàm thuần của t. Chờ font/ảnh sẵn sàng. Khoá font và thư viện ở local. Seek test: A → B → A phải ra cùng ảnh.
+Cấm `Date.now()`, `performance.now()`, timer, `requestAnimationFrame`, CSS transition/keyframes, `Math.random()` không seed, tải mạng lúc render, `repeat: -1`, tích phân từng khung. Mọi thứ là hàm thuần của t. Khoá font và thư viện ở local.
+- `node render.mjs --verify <mốc>` phải OK trước khi review (hash giống nhau khi seek khác thứ tự). Font canvas nạp muộn sẽ làm FAIL; `render.mjs` đã có bước warm-up.
+- Lò xo dạng đóng (`lib/motion.js`): giá trị đổi đích nhiều lần thì dùng `track()` (cộng một lò xo mỗi lần đổi), không khởi động lại. Chữ/số cần đọc khi có motion blur thì dùng `frameT(t, fps)`.
+- Loop: khung 0 phải đầy đủ (không "pop in" từ rỗng); đo `diff(t0, t_end − 1/fps)` ≈ 0.
 
 ## Âm thanh là đồng hồ
 
@@ -68,12 +71,21 @@ Có lời dẫn thì làm voice trước, lấy timestamp, hình bám theo. MV t
 
 ## Review — model không xem video, nhưng xem được ảnh
 
-Render rồi **mở ảnh ra nhìn thật**: contact sheet (mỗi beat), strip (mọi khung quanh chuyển cảnh và cú máy), crop (mặt, tay, chữ), thumbnail cỡ điện thoại (~200 px ngang: còn tìm thấy điểm neo không). Critic: "Chỉ phán xét khung đã render. Tìm 3 lỗi lớn nhất, mỗi lỗi có khung, bằng chứng, biến cần sửa. Vá đúng đoạn đó rồi render lại." QA cuối chạy trên chính MP4: `scripts/qa_video.sh out/video.mp4`.
+Render rồi **mở ảnh ra nhìn thật**: `render.mjs --sheet` (mỗi beat một khung), `--strip a:b` (mọi khung quanh chuyển cảnh, cú máy), crop (mặt, tay, chữ), test cỡ điện thoại 360 px (còn đọc được, còn thấy điểm neo không; ảnh cỡ nhỏ bắt được lỗi mà ảnh lớn bỏ sót, vd số bị nhoè vì blur).
+
+Critic: "Làm đạo diễn khó tính, không phải tác giả tự hào. Chỉ phán xét khung đã render. Chấm 1–10: hook 2 giây đầu · đọc ở cỡ điện thoại · chuyển động · biến hoá (mỗi 2–4 s có điều mới) · bố cục · đúng thương hiệu · sync âm. Tìm 3 lỗi lớn nhất, mỗi lỗi có timestamp, bằng chứng, biến cần sửa. Vá, render lại đúng đoạn đó (`--range`), chấm lại. Lặp đến khi mọi điểm ≥ 8." QA cuối chạy trên chính MP4: `scripts/qa_video.sh out/final.mp4`.
+
+## Setup và route
+
+Cần agent có shell (Claude Code / Codex / Cowork) để render và tự nhìn khung. Mỗi project phim có `CLAUDE.md` + `AGENTS.md` (luật nhà, copy từ `templates/studio/`). Mặc định route A: một `index.html` có `window.seek(t)` + `scripts/render.mjs`. Muốn Remotion/HyperFrames thì phải nói rõ (Opus tự chọn route A). Effort: medium để sửa, xhigh cho phim mới, max cho flagship. Mỗi thương hiệu một phiên.
 
 ## Đọc thêm khi cần (đừng nạp hết một lúc)
 
 | File | Đọc khi |
 |---|---|
+| `references/setup-and-studio.md` | **Bắt đầu project:** cài đặt, khởi tạo thư mục phim, bộ công cụ, lệnh ffmpeg kiểm tra, bảng bẫy đã gặp thật |
+| `references/prompt-patterns.md` | Viết prompt: one-liner (chỉ test engine), thương hiệu (asset thật), tham chiếu, spec XML (một hình không cắt), brief đạo diễn qua đêm, prompt critic |
+| `references/prior-art.md` | Repo nào lấy gì; 7 con đường sản xuất; 3 giai đoạn nghiệm thu; so chi phí |
 | `references/brief-and-shotlist.md` | Viết brief 8 mục, style guide, shotlist, reads |
 | `references/motion-language.md` | Thiết kế chuyển động, vật lý, ánh sáng, nhóm đối tượng |
 | `references/camera-moves.md` | Chọn và code 17 chuyển động camera (dolly/zoom/truck/orbit/whip…), viết camera cho prompt model video |
@@ -83,8 +95,11 @@ Render rồi **mở ảnh ra nhìn thật**: contact sheet (mỗi beat), strip (
 | `references/review-and-qa.md` | Contact sheet, checklist khung, QA trên MP4 |
 | `references/delivery-and-ethics.md` | 16:9 vs 9:16, cấu trúc studio, prompt contract, chi phí, pháp lý |
 | `templates/` | brief, director-brief-8, style-guide, shotlist, review, timeline mẫu |
-| `scripts/render.mjs` + `examples/minimal/` | Renderer Playwright + FFmpeg đã chạy thử (`--stills=…` hoặc full MP4) |
+| `lib/motion.js` | spring, track, indicator, swapAlpha, frameT, loopT, rng, kf, pulse, camera 2.5D |
+| `scripts/render.mjs` | Render pipe ffmpeg, `--sub` blur, `--range`, `--stills`, `--sheet`, `--strip`, `--verify` |
+| `scripts/beats.py` · `sfx.mjs` · `beat_grid.py` · `qa_video.sh` | Đo beat nhạc · tổng hợp SFX/nền · lưới BPM↔fps · QA MP4 |
+| `examples/minimal/` | Phim 6 s "một hình không cắt" + cues.json, đã qua verify, critic 3 lỗi, loop seam, blur |
 
-Thư mục studio cho mỗi phim: `brief.md · style-guide.md · shotlist.md · timeline.json · assets/ · src/ · reviews/ · out/`. Copy template vào đó trước khi bắt đầu.
+Thư mục mỗi phim: `CLAUDE.md · AGENTS.md · docs/ (brief, style_guide, shotlist, review_log) · refs/ · assets/ · lib/ · index.html · render.mjs · out/`. Lệnh khởi tạo ở `references/setup-and-studio.md`.
 
 Kho kiến thức gốc (bài dịch, repo HyperFrames, ClaudeAnimationBase, claude-video-studio) có thể nằm ở `C:\Users\Admin\Documents\Knowledge film Claude Codex` trên máy người dùng. Tra API chi tiết ở đó thay vì đoán.
