@@ -15,6 +15,8 @@ skills/code-motion-video/
   lib/motion.js                 lò xo dạng đóng, track, frameT, loopT, rng, camera 2.5D
   scripts/                      render.mjs, beats.py, sfx.mjs, beat_grid.py, qa_video.sh
   templates/studio/             CLAUDE.md + AGENTS.md (luật nhà cho mỗi project phim)
+  templates/center/             AGENTS.md cho Worker (Codex) + mẫu lệnh việc TASK
+  scripts/center/               watch-tasks.ps1 (hộp thư Center→Codex), setup.ps1
   examples/minimal/             phim 6 s "một hình không cắt" + cues.json
 AGENTS.md                       điểm vào cho Codex
 ```
@@ -24,6 +26,19 @@ AGENTS.md                       điểm vào cho Codex
 - **Cowork:** cài repo này như một plugin (manifest ở `.claude-plugin/`).
 - **Claude account skill:** chỉ nhận một SKILL.md, nên dùng bản lõi `skills/code-motion-video/SKILL.md`.
 - **Codex:** clone repo, để `AGENTS.md` ở gốc project hoặc copy `skills/code-motion-video/` vào thư mục skills của Codex.
+
+## Center–Worker: Claude đạo diễn, Codex thi công
+
+Claude giữ brief, style guide, shotlist, chấm điểm khung hình; Codex (GPT) code và render theo lệnh việc.
+Hai bên nói chuyện qua file trong thư mục phim: `tasks/queue/TASK-NN.md` → `reports/TASK-NN.md` + `out/check/*.png`.
+
+```powershell
+# trong thư mục phim (Windows)
+powershell -ExecutionPolicy Bypass -File center\setup.ps1        # playwright + chromium, kiểm node/ffmpeg/codex
+powershell -ExecutionPolicy Bypass -File center\watch-tasks.ps1  # hộp thư: thấy TASK mới → codex exec (sandbox workspace-write)
+```
+
+Chi tiết: `skills/code-motion-video/references/center-worker.md`.
 
 ## Thử nhanh
 
