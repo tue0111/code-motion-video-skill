@@ -15,6 +15,15 @@ param(
 $ErrorActionPreference = "Stop"
 $Root = (Get-Location).Path
 foreach ($d in "tasks\queue", "tasks\done", "reports", "logs") { New-Item -ItemType Directory -Force -Path (Join-Path $Root $d) | Out-Null }
+# Tìm ffmpeg kể cả khi vừa cài bằng winget mà PATH của tiến trình chưa cập nhật
+function Add-FfmpegToPath {
+  if (Get-Command ffmpeg -ErrorAction SilentlyContinue) { return }
+  $cands = @("$env:LOCALAPPDATA\Microsoft\WinGet\Links", "C:\ffmpeg\bin", "$env:ProgramFiles\ffmpeg\bin")
+  $pk = Get-ChildItem "$env:LOCALAPPDATA\Microsoft\WinGet\Packages" -Directory -Filter "Gyan.FFmpeg*" -ErrorAction SilentlyContinue
+  foreach ($p in $pk) { $cands += (Get-ChildItem $p.FullName -Recurse -Filter ffmpeg.exe -ErrorAction SilentlyContinue | Select-Object -First 1 | ForEach-Object { $_.DirectoryName }) }
+  foreach ($c in $cands) { if ($c -and (Test-Path (Join-Path $c "ffmpeg.exe"))) { $env:PATH = "$c;$env:PATH"; return } }
+}
+Add-FfmpegToPath
 $codex = Get-Command codex -ErrorAction SilentlyContinue
 if (-not $codex) { Write-Host "Không thấy lệnh 'codex'. Cài: npm i -g @openai/codex rồi 'codex login'." -ForegroundColor Red; exit 1 }
 
@@ -22,7 +31,7 @@ if (-not $codex) { Write-Host "Không thấy lệnh 'codex'. Cài: npm i -g @ope
 $ErrorActionPreference = "Continue"
 & codex --version *> (Join-Path $Root "logs\codex-version.txt")
 & codex exec --help *> (Join-Path $Root "logs\codex-exec-help.txt")
-"$(Get-Date -Format s) watcher started in $Root (sandbox=$Sandbox effort=$Effort)" | Out-File -Append -Encoding utf8 (Join-Path $Root "logs\watcher.log")
+"$(Get-Date -Format s) watcher started in $Root (sandbox=$Sandbox effort=$Effort) ffmpeg=$([bool](Get-Command ffmpeg -ErrorAction SilentlyContinue))" | Out-File -Append -Encoding utf8 (Join-Path $Root "logs\watcher.log")
 Write-Host "Center inbox đang chạy trong $Root — chờ tasks\queue\*.md (Ctrl+C để dừng)" -ForegroundColor Cyan
 
 function Invoke-Task($task) {
