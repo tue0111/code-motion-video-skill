@@ -26,6 +26,20 @@ Bạn (Codex / GPT) là **WORKER**: người thi công. **CENTER** (Claude) là 
 4. Tự xem ảnh bằng chứng. Gặp lỗi hiển nhiên (chữ tràn, chồng chữ, khung rỗng) thì sửa trước khi báo cáo.
 5. Ghi `reports/TASK-NN.md` theo mẫu dưới. **Không tự chấm điểm thẩm mỹ.** Center chấm.
 
+## Vòng đời lệnh việc
+- Watcher sở hữu tín hiệu hoàn tất: sau khi bạn thoát, nó ghi `reports/TASK-NN.done.json` và chuyển lệnh sang `tasks/done/`. **Bạn không tự tạo done.json hay di chuyển file trong tasks/.**
+- Chạy không qua watcher (thủ công): báo cáo xong là hoàn tất; Center tự kiểm.
+- Chạy lại cùng nội dung: Center tạo ID mới `TASK-NN-r2`. Mọi file bằng chứng mang tiền tố ID của lệnh (`out/check/TASK-NN-r2-sheet.png`), không ghi đè bằng chứng của lượt trước.
+- Môi trường: watcher đã thêm ffmpeg vào PATH. Nếu vẫn ENOENT, tìm `ffmpeg.exe` trong `%LOCALAPPDATA%\Microsoft\WinGet\Packages` và đặt PATH trong tiến trình, ghi lại trong báo cáo.
+
+## Bằng chứng bắt buộc theo gate (kể cả khi lệnh không liệt kê)
+| Gate | Bắt buộc |
+|---|---|
+| G3 key pose | `--verify` ở mọi key pose · `--sheet` các key pose |
+| G4 rough cut | `--verify` · `--sheet` mỗi beat · `--strip` mọi chuyển cảnh đã chạm · test cỡ điện thoại (sheet `--w 360`) |
+| G5 sửa lỗi | `--strip` đúng các timestamp lỗi trước và sau sửa · `--verify` các mốc đó |
+| G6 final | render `--sub 4` · `node scripts/qa.mjs out/final.mp4 out/qa` · `diff` khung 0 và khung cuối nếu phim loop |
+
 ## Mẫu báo cáo
 ```
 # TASK-NN — <tên>
