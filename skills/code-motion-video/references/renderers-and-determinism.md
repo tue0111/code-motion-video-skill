@@ -36,6 +36,8 @@ Dùng hệ nhỏ nhất đủ cho phim sẽ làm lại. HeyGen ghi nhận: ràng
 
 ### 9. Renderer tự viết tối thiểu (đã kiểm chứng: Playwright + FFmpeg)
 
+> Bản đầy đủ hơn nằm ở `scripts/render.mjs`: `window.seek(t)` hoặc `renderFrame(t)`, pipe ffmpeg, `--sub` blur, `--range`, `--sheet`, `--strip`, `--verify`, warm-up font. Đoạn dưới là phiên bản tối giản để hiểu cơ chế.
+
 `index.html` expose `window.PROJECT = {w,h,fps,duration,seed}`, `window.renderFrame(t)` vẽ toàn bộ khung (cả nền) từ t, và `window.__ready` (promise font/asset).
 
 ```js
