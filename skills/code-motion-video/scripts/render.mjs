@@ -9,7 +9,7 @@
 // Tuỳ chọn: --page index.html  --sel canvas (bỏ trống = chụp cả viewport)  --fps  --dur  --w 320 (ô sheet)  --out file
 // Trong sandbox không có playwright cục bộ: NODE_PATH không áp dụng cho ESM → symlink node_modules/playwright.
 import { chromium } from 'playwright';
-import { spawn } from 'node:child_process';
+import { spawn, spawnSync } from 'node:child_process';
 import { mkdirSync, writeFileSync, rmSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { resolve } from 'node:path';
@@ -20,6 +20,11 @@ for (let i = 0; i < av.length; i++) if (av[i].startsWith('--')) {
   A[k] = v ?? (av[i + 1] !== undefined && !av[i + 1].startsWith('--') ? av[++i] : true);
 }
 const list = s => String(s).split(',').map(Number), span = s => String(s).split(':').map(Number);
+const needsFfmpeg = !A.stills && !A.verify;
+if (needsFfmpeg && spawnSync('ffmpeg', ['-version']).error) {
+  console.error('THIẾU ffmpeg trong PATH (cần cho --sheet/--strip/render). Windows: winget install Gyan.FFmpeg; macOS: brew install ffmpeg; Linux: apt install ffmpeg');
+  process.exit(2);
+}
 const ffmpeg = (args, feed) => new Promise((ok, bad) => {
   const p = spawn('ffmpeg', ['-y', '-loglevel', 'error', ...args], { stdio: [feed ? 'pipe' : 'ignore', 'inherit', 'inherit'] });
   p.on('close', c => c ? bad(new Error('ffmpeg exited ' + c)) : ok());
