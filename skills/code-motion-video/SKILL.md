@@ -55,6 +55,8 @@ Luật cứng:
 - **Một hành động đầy đủ:** chuẩn bị → kéo giãn → va đập (khớp tiếng) → nén → overshoot → ổn định → phản ứng thứ cấp. Biến dạng phải có nguyên nhân. Không reset vận tốc về 0 khi đổi trạng thái.
 - **Reads:** người xem chỉ xem một lần. Mỗi điều cần hiểu có đủ khung để mắt tìm thấy, hiểu và ghi nhận. Một read một lúc; hành động nhanh, ý nghĩa giữ lâu.
 - Mọi đường nối có transition có động cơ; kết vần với mở đầu.
+- **Phân cấp 6:3:1:** khoảng 60% nền yên, 30% chuyển tiếp dẫn mắt, 10% điểm neo tương phản cao. Chiếm nhiều diện tích ≠ thu hút nhất. Muốn giữ phong cách rực thì lập phân cấp bằng độ sáng thay vì xoá màu.
+- **Camera:** mỗi shot một chuyển động chính. Ghi khung đầu, cái gì di chuyển (vị trí / hướng / tiêu cự), hướng và tốc độ, khung cuối, cái gì giữ nguyên. Dolly có parallax, zoom thì không; đừng dùng `scale()` toàn khung để giả dolly.
 
 ## Determinism (mọi renderer)
 
@@ -66,7 +68,7 @@ Có lời dẫn thì làm voice trước, lấy timestamp, hình bám theo. MV t
 
 ## Review — model không xem video, nhưng xem được ảnh
 
-Render rồi **mở ảnh ra nhìn thật**: contact sheet (mỗi beat), strip (mọi khung quanh chuyển cảnh), crop (mặt, tay, chữ). Critic: "Chỉ phán xét khung đã render. Tìm 3 lỗi lớn nhất, mỗi lỗi có khung, bằng chứng, biến cần sửa. Vá đúng đoạn đó rồi render lại." QA cuối chạy trên chính MP4: `scripts/qa_video.sh out/video.mp4`.
+Render rồi **mở ảnh ra nhìn thật**: contact sheet (mỗi beat), strip (mọi khung quanh chuyển cảnh và cú máy), crop (mặt, tay, chữ), thumbnail cỡ điện thoại (~200 px ngang: còn tìm thấy điểm neo không). Critic: "Chỉ phán xét khung đã render. Tìm 3 lỗi lớn nhất, mỗi lỗi có khung, bằng chứng, biến cần sửa. Vá đúng đoạn đó rồi render lại." QA cuối chạy trên chính MP4: `scripts/qa_video.sh out/video.mp4`.
 
 ## Đọc thêm khi cần (đừng nạp hết một lúc)
 
@@ -74,6 +76,8 @@ Render rồi **mở ảnh ra nhìn thật**: contact sheet (mỗi beat), strip (
 |---|---|
 | `references/brief-and-shotlist.md` | Viết brief 8 mục, style guide, shotlist, reads |
 | `references/motion-language.md` | Thiết kế chuyển động, vật lý, ánh sáng, nhóm đối tượng |
+| `references/camera-moves.md` | Chọn và code 17 chuyển động camera (dolly/zoom/truck/orbit/whip…), viết camera cho prompt model video |
+| `references/visual-hierarchy-631.md` | Bố cục, màu, ánh sáng, mật độ chi tiết theo 6:3:1; thumbnail test; khung prompt cảnh |
 | `references/audio-timing.md` | Voice, MV, BPM ↔ fps, SFX |
 | `references/renderers-and-determinism.md` | Chọn HyperFrames / Remotion / tự viết; bẫy HyperFrames; mẫu renderer |
 | `references/review-and-qa.md` | Contact sheet, checklist khung, QA trên MP4 |
