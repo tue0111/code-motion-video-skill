@@ -24,7 +24,7 @@ film/
   docs/  tasks/queue/  tasks/done/  reports/  logs/  assets/  lib/  scenes/  out/check/
 ```
 - **Kích hoạt:** người dùng chạy một lần `powershell -ExecutionPolicy Bypass -File center\watch-tasks.ps1` trong thư mục phim. Watcher gọi `codex exec --skip-git-repo-check -C <film> -s workspace-write -c model_reasoning_effort=high -o reports/ID.last.txt "<lệnh>"`. Center tắt từ xa bằng cách ghi file `tasks/STOP`.
-- **Vì sao không gõ thẳng vào terminal:** computer use chỉ cấp quyền "xem + click" cho terminal và IDE, không cho gõ phím. Watcher thay thế cách đó, mà còn ổn định hơn.
+- **Vì sao không gõ thẳng vào terminal:** computer use chỉ cấp quyền "xem + click" cho terminal, IDE và File Explorer, không cho gõ phím. Cách làm đã chạy thật: Center ghi `START-CENTER.cmd` vào thư mục phim (`device_commit_files`), mở File Explorer, **double-click** file đó. Nó chạy `setup.ps1` rồi bật `watch-tasks.ps1` trong cửa sổ riêng. Cập nhật watcher thì ghi `tasks/STOP` (watcher cũ tự tắt sau lệnh đang chạy), đẩy script mới, double-click lại. Chỉ xếp lệnh mới vào hàng **sau khi** watcher mới đã chạy, nếu không watcher cũ sẽ nhận lệnh trước khi đọc STOP.
 - **Center đọc kết quả:** `device_list_dir reports/` → có `TASK-NN.done.json` là xong → stage `reports/TASK-NN.md` và `out/check/TASK-NN-*.png` → Read ảnh → chấm điểm. Cờ của CLI có thể đổi giữa phiên bản: đọc `logs/codex-exec-help.txt` nếu exit ≠ 0.
 - **Sandbox `workspace-write`:** Worker chỉ ghi trong thư mục phim, không có mạng. Mọi thứ cần tải (playwright, font, asset) phải xong ở `setup.ps1` hoặc do Center đưa vào `assets/` trước.
 
@@ -34,6 +34,11 @@ film/
 3. **TASK-02..k (G4 rough):** mỗi lệnh 1–3 shot liền nhau, có chuyển cảnh. Lệnh nhỏ thì Worker ít lạc và Center chấm dễ.
 4. **Critic sau mỗi báo cáo:** Center xem sheet, strip, phone; chấm 1–10 trên 7 trục; ghi `review_log.md`; viết lệnh sửa **chỉ 3 lỗi lớn nhất**, mỗi lỗi có timestamp, bằng chứng, biến và kết quả mong muốn.
 5. **G6:** lệnh render full `--sub 4` + `sfx.mjs`/nhạc + `node scripts/qa.mjs`. Center tự stage MP4, trích khung, nghe lại các mốc cue trước khi nghiệm thu.
+
+## Kết quả chạy thật (02/10/2026, Windows, codex-cli 0.159.3)
+- `codex exec -s workspace-write` chạy được Playwright và Chromium **bên trong sandbox**: verify OK trên Windows giống hệt Linux.
+- TASK-00 (smoke test và học luật) mất 5,6 phút. Codex theo đúng giao thức: dán nguyên lỗi, giữ PARTIAL, không làm vượt phạm vi, **tự tìm ra lỗi hình** (cột biểu đồ đè lên số) và chỉ ra 3 lỗ hổng giao thức. Đã vá cả ba: phạm vi CLAUDE.md và AGENTS.md, vòng đời lệnh (`done.json` do watcher sở hữu, chạy lại thì dùng ID `TASK-NN-r2`), bảng bằng chứng theo gate.
+- Bẫy môi trường: ffmpeg cài qua winget nhưng chưa vào PATH của tiến trình, nên `spawn ffmpeg ENOENT`. Watcher và setup giờ tự tìm trong `%LOCALAPPDATA%\Microsoft\WinGet\Packages\Gyan.FFmpeg*`. PowerShell 5.1: `Tee-Object` và `*>` ghi UTF-16, nên log của Center phải ghi bằng `Out-File -Encoding utf8`. File `.ps1` có tiếng Việt phải là UTF-8 có BOM.
 
 ## Viết lệnh việc cho GPT (điều rút ra)
 - **Tách rõ "cái gì" và "làm sao":** Center chốt trạng thái, mốc, cảm giác. Worker chọn cách code. Ghi luật cấm cụ thể ("không dùng lại bố cục chữ trái/ảnh phải của S02"), vì "làm cho cool" sẽ quay về mặc định.
