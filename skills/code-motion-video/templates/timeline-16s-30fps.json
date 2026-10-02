@@ -1,0 +1,55 @@
+{
+  "label": "Compiler-independent illustrative example, not a film made by the author",
+  "fps": 30,
+  "duration_seconds": 16,
+  "duration_frames": 480,
+  "frame_index_base": 0,
+  "interval": "start-inclusive, end-exclusive",
+  "beats": [
+    {
+      "label": "hook",
+      "start_seconds": 0,
+      "end_seconds_exclusive": 2,
+      "first_frame": 0,
+      "end_frame_exclusive": 60,
+      "last_frame": 59
+    },
+    {
+      "label": "problem",
+      "start_seconds": 2,
+      "end_seconds_exclusive": 5,
+      "first_frame": 60,
+      "end_frame_exclusive": 150,
+      "last_frame": 149
+    },
+    {
+      "label": "reveal",
+      "start_seconds": 5,
+      "end_seconds_exclusive": 9,
+      "first_frame": 150,
+      "end_frame_exclusive": 270,
+      "last_frame": 269
+    },
+    {
+      "label": "proof",
+      "start_seconds": 9,
+      "end_seconds_exclusive": 13,
+      "first_frame": 270,
+      "end_frame_exclusive": 390,
+      "last_frame": 389
+    },
+    {
+      "label": "close",
+      "start_seconds": 13,
+      "end_seconds_exclusive": 16,
+      "first_frame": 390,
+      "end_frame_exclusive": 480,
+      "last_frame": 479
+    }
+  ],
+  "audio_cue_example": {
+    "time_seconds": 1.5,
+    "frame": 45,
+    "observed_in_media": false
+  }
+}

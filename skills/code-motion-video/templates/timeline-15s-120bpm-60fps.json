@@ -1,0 +1,46 @@
+{
+  "source": "Article image block 29/38/71; derived arithmetic only",
+  "duration_seconds": 15,
+  "fps": 60,
+  "duration_frames": 900,
+  "bpm": 120,
+  "seconds_per_beat": 0.5,
+  "frames_per_beat": 30,
+  "beats_in_duration": 30,
+  "frame_index_base": 0,
+  "shots": [
+    {
+      "label": "opening",
+      "start_frame": 0,
+      "end_frame_exclusive": 180
+    },
+    {
+      "label": "development",
+      "start_frame": 180,
+      "end_frame_exclusive": 660
+    },
+    {
+      "label": "close",
+      "start_frame": 660,
+      "end_frame_exclusive": 900
+    }
+  ],
+  "example_event": [
+    {
+      "label": "anticipation",
+      "frame": 24,
+      "time_seconds": 0.4
+    },
+    {
+      "label": "contact_and_sfx",
+      "frame": 30,
+      "time_seconds": 0.5
+    },
+    {
+      "label": "secondary_response",
+      "frame": 33,
+      "time_seconds": 0.55
+    }
+  ],
+  "observed_in_video": false
+}
