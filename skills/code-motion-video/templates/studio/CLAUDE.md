@@ -1,6 +1,6 @@
 # Luật nhà của motion studio
 
-Claude Code đọc file này ở mỗi lượt chạy trong project. Codex đọc `AGENTS.md`, là bản giống hệt file này. Các luật áp dụng cho mọi phim làm trong thư mục này.
+Claude Code đọc file này ở mỗi lượt chạy trong project. **Phạm vi:** khi một agent làm cả phim một mình, file này là luật đầy đủ. Trong studio **Center–Worker**, file này áp dụng cho **Center (Claude)**; Worker (Codex) theo `AGENTS.md`. Phần "Lặp trước khi cho tôi xem" (chấm điểm, ghi review_log) là việc của Center, Worker không làm.
 
 ## Hợp đồng render
 - Mỗi phim là hàm thuần của thời gian: `window.seek(t)` vẽ khung t, `window.PROJECT = {w,h,fps,duration}`.
