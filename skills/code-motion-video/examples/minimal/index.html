@@ -43,8 +43,8 @@ function seek(T) {
   if (a > 0) {
     g.fillStyle = '#A9A397'; g.font = '500 30px system-ui'; g.textAlign = 'left'; g.fillText('Renders this week', 320, 450);
     const n = Math.round(1280 * ease(seg(frameT(t, PROJECT.fps), 6 * B + 0.1, 8 * B)));   // số phải đọc được → lượng tử theo khung
-    g.fillStyle = PAPER; g.font = '700 96px system-ui'; g.fillText(n.toLocaleString('en-US'), 316, 535);
-    for (let i = 0; i < 8; i++) { const hh = (30 + 70 * Math.abs(Math.sin(i * 1.7))) * spring(t - 7 * B - i * 0.05, ...SPRING.snappy); g.fillStyle = i === 7 ? ACCENT : '#4A463F'; g.fillRect(320 + i * 54, 650 - hh, 36, hh); }
+    g.fillStyle = PAPER; g.font = '700 96px system-ui'; g.fillText(n.toLocaleString('en-US'), 316, 520);
+    for (let i = 0; i < 8; i++) { const hh = (18 + 46 * Math.abs(Math.sin(i * 1.7))) * spring(t - 7 * B - i * 0.05, ...SPRING.snappy); g.fillStyle = i === 7 ? ACCENT : '#4A463F'; g.fillRect(320 + i * 54, 668 - hh, 36, hh); }
     g.textAlign = 'center';
   }
   g.globalAlpha = 1;
