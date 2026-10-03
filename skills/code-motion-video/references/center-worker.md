@@ -40,6 +40,13 @@ film/
 - TASK-00 (smoke test và học luật) mất 5,6 phút. Codex theo đúng giao thức: dán nguyên lỗi, giữ PARTIAL, không làm vượt phạm vi, **tự tìm ra lỗi hình** (cột biểu đồ đè lên số) và chỉ ra 3 lỗ hổng giao thức. Đã vá cả ba: phạm vi CLAUDE.md và AGENTS.md, vòng đời lệnh (`done.json` do watcher sở hữu, chạy lại thì dùng ID `TASK-NN-r2`), bảng bằng chứng theo gate.
 - Bẫy môi trường: ffmpeg cài qua winget nhưng chưa vào PATH của tiến trình, nên `spawn ffmpeg ENOENT`. Watcher và setup giờ tự tìm trong `%LOCALAPPDATA%\Microsoft\WinGet\Packages\Gyan.FFmpeg*`. PowerShell 5.1: `Tee-Object` và `*>` ghi UTF-16, nên log của Center phải ghi bằng `Out-File -Encoding utf8`. File `.ps1` có tiếng Việt phải là UTF-8 có BOM.
 
+- **Launcher không thấy tên trong Explorer** (cửa sổ khác che danh sách, chỉ còn 1–2 hàng đầu đọc được): đặt mỗi `.cmd` vào **thư mục riêng tên bắt đầu bằng `_`** (`_run/1-WATCHER.cmd`, `cd /d "%~dp0.."`). Thư mục đó lên đầu danh sách, bên trong chỉ có một file ở hàng đầu, double-click chắc trúng. Đừng đoán hàng theo icon.
+- **`device_commit_files` có lúc để lại bản cũ trên máy** khi ghi đè cùng tên. Cần chắc chắn thì commit tên mới (`script-v2.ps1`) và trỏ launcher sang đó, rồi kiểm `size` bằng `device_list_dir`.
+- **Font khi GitHub raw bị chặn (403) ở sandbox cloud:** lấy từ npm: `npm pack @fontsource-variable/<font>` (registry npm được phép). Gói có woff2 và CSS `unicode-range`. Với CJK, chỉ giữ các chunk phủ đúng ký tự trong brief/shotlist (khoảng 10 chunk, dưới 1 MB), viết lại một `assets/fonts/fonts.css`, rồi commit thẳng vào máy. Không cần chạy script tải trên PC. Worker chờ font bằng `document.fonts.load(font, '<chuỗi CJK>')`.
+- Watcher có thể đã tắt (cửa sổ bị đóng). Sau khi xếp lệnh, kiểm `logs/` sau một chu kỳ poll: không có `TASK-NN.log` mới thì chạy lại launcher.
+
+- **Quyết định có tham số bằng Jev (TypeSafe Decisions API, MCP `jev_decide`)** khi Center không tự kiểm được bằng giác quan (ví dụ không nghe được nhạc): đưa số đo + quan sát vào `state`, hỏi kiểu `noul` (accept?), `score` (mức rủi ro theo thang), `choice` (sửa ngay / sau hình / không sửa). Ghi xác suất vào `review_log.md` và vào lệnh việc kế tiếp. Ví dụ thật: TASK-03 nhạc → accept 0,75, đơn điệu 2,92/4, sửa sau hình 0,79.
+
 ## Viết lệnh việc cho GPT (điều rút ra)
 - **Tách rõ "cái gì" và "làm sao":** Center chốt trạng thái, mốc, cảm giác. Worker chọn cách code. Ghi luật cấm cụ thể ("không dùng lại bố cục chữ trái/ảnh phải của S02"), vì "làm cho cool" sẽ quay về mặc định.
 - **Lệnh có tiêu chí kiểm được:** "khung 3,5 s: số 449 nét, không chồng nhãn trong strip 3,4:3,8". Không viết "đẹp hơn".
