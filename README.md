@@ -27,9 +27,17 @@ AGENTS.md                       điểm vào cho Codex
 - **Claude account skill:** chỉ nhận một SKILL.md, nên dùng bản lõi `skills/code-motion-video/SKILL.md`.
 - **Codex:** clone repo, để `AGENTS.md` ở gốc project hoặc copy `skills/code-motion-video/` vào thư mục skills của Codex.
 
-## Center–Worker: Claude đạo diễn, Codex thi công
+## Đạo diễn trước, đẹp sau (v0.4.0)
 
-Claude giữ brief, style guide, shotlist, chấm điểm khung hình; Codex (GPT) code và render theo lệnh việc.
+Bài học từ một phim thật (`references/case-film01.md`): phim kỹ thuật sạch, Center chấm ≥ 8 mọi trục, vẫn bị chủ phim chê vì **chọn sai loại phim**. Từ v0.4.0:
+- **G0** bắt buộc: biết–cảm–làm → chọn loại phim (`references/film-types.md`, 11 loại kèm cấu trúc 15/30/60 s) → câu trả lời mong muốn ở giây 5.
+- **G2:** storyboard/animatic tốc độ thật được chủ phim duyệt. Im lặng không phải là duyệt.
+- **Rubric mới** (`references/rubric.md`): A1–A3 khán giả (hiểu / muốn / nhớ) + T1–T5 thi công; chưa kiểm = N/A.
+- **30 lỗi hay gặp** kèm cách phát hiện bằng máy (`references/failure-modes.md`) và chuỗi 15 bước brief → phim (`references/director-decision-chain.md`).
+
+## Ba bên: Claude đạo diễn · Astra dò lỗi · Sol thi công
+
+Claude giữ brief, style guide, shotlist, chấm rubric, chốt nghiệm thu. Astra (model GPT cao nhất) lập kế hoạch, phản biện và dò lỗi. Sol (GPT) code và render theo lệnh việc.
 Hai bên nói chuyện qua file trong thư mục phim: `tasks/queue/TASK-NN.md` → `reports/TASK-NN.md` + `out/check/*.png`.
 
 ```powershell

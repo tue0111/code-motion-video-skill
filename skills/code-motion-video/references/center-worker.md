@@ -1,4 +1,4 @@
-# Center–Worker: Claude đạo diễn, Codex/GPT thi công
+# Center–Worker: Claude đạo diễn, Astra dò lỗi, Sol thi công
 
 Nguồn: 李岳 "Codex + GPT-6.1 Sol làm motion video" (02/10/2026), video mẫu của tác giả, bài 观默, và giới hạn nền tảng gặp khi dựng.
 
@@ -6,6 +6,21 @@ Nguồn: 李岳 "Codex + GPT-6.1 Sol làm motion video" (02/10/2026), video mẫ
 - **GPT-6.1 Sol thi công tốt:** một clip 30 s, 1920×1080, 60 fps, nhạc gốc 144 BPM, asset thật, QR cuối phim, khoảng 22 phút ở fast mode và dưới 4% quota tuần (theo lời tác giả). Nó có thể **học một repo** (awesome-ai-motion) trước khi làm, nhưng hay "học lướt", phải bảo học tiếp.
 - **Nó thiếu lớp đạo diễn.** Với prompt một câu ("làm cho cool, 30 giây"), video mẫu ra cảm giác slideshow: 6/8 đoạn cùng bố cục chữ trái ảnh phải, cắt cứng giữa trạng thái, glitch ở khoảng 14,3 s làm hai nhãn chồng nhau. 观默 nhận xét tương tự: Codex không tự bổ sung lớp đạo diễn, chỉ làm cho "chạy được".
 - **Claude làm Center:** brief, tham chiếu, shotlist, gate, critic. Phần này cần phán đoán và nhìn ảnh, tốn ít token. Code nặng và render dài đẩy sang quota GPT. Hai quota cộng lại, mỗi bên làm việc mình giỏi.
+
+## Ba bên: Claude (Center) · Astra (Planner/Critic) · Sol (Worker)
+
+| | Claude, Center | Astra, model GPT cao nhất | Sol 6.1, Worker |
+|---|---|---|---|
+| Mạnh ở | đạo diễn, thẩm mỹ, nhìn ảnh, chốt | lập kế hoạch, phân tích, **dò lỗi**, phản biện | thi công code, render, đo đạc |
+| Làm | G0–G2 cùng chủ phim, viết lệnh việc, chấm rubric, chốt acceptance, viết bản cuối của skill/tài liệu | phản biện kế hoạch **trước** build (type, story, rủi ro, xung đột tài liệu); chấm mù bản render **song song** với Center; soạn nháp kiến thức | code theo lệnh, tự kiểm (`--verify`, sheet, strip), render, báo cáo; tiện ích (git push) |
+| Không làm | code scene khi Worker đang giữ file | sửa file của Center; thi công | tự chấm thẩm mỹ; làm ngoài phạm vi |
+
+- **Chọn model theo lệnh:** watcher không ép model thì dùng model mặc định trong `/model` của Codex. Lệnh plan/critic chạy `-m <astra>`, lệnh gia công chạy `-m gpt-6.1-sol` (hoặc chạy hai watcher, mỗi cái một `-Model`). Báo cáo phải ghi model thực chạy (dòng `model:` trong log), không nhận nhãn vai thay cho model.
+- **Hai bên cùng thấy một lỗi = lỗi thật.** Lệch nhau thì Center xem lại bằng mắt và chốt. Điểm bất đồng có tham số thì đưa Jev cân rồi ghi vào `decisions.md`.
+- **Vòng kiến thức (K-xx):** Astra đọc skill + dữ liệu thật của dự án, viết `gap_analysis`, đề xuất, câu hỏi cho Center → Center đọc, Jev cân điểm bất đồng, viết bản cuối vào repo → vòng sau Astra dò lỗi bản cuối.
+- **Đẩy GitHub qua Worker:** máy người dùng có git và đăng nhập sẵn. Center đặt file vào `knowledge/gh_incoming/` + `COMMIT_MSG.txt`, lệnh tiện ích clone/pull → chép đè → commit → push. Đặt `user.name`/`user.email` **riêng cho repo** (không `--global`). Push đòi đăng nhập thì Worker dừng `BLOCKED`, không tự nhập mật khẩu/token.
+- **Hạn mức:** Codex có thể hết hạn mức giữa hàng đợi (log: "You've hit your usage limit… try again at HH:MM"). Lệnh sau thoát ngay với exit 1. Xếp lệnh theo ưu tiên, lệnh nhỏ, và hẹn xếp lại sau giờ reset.
+- **Sau crash:** sandbox Windows có thể lỗi `apply deny-read ACLs`. Chạy `-s danger-full-access` chỉ khi chủ máy cho phép, và ghi lại. Chẩn đoán tách bạch OOM / process exit / ACL / quota.
 
 ## Phân quyền
 | | Center (Claude) | Worker (Codex) |

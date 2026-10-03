@@ -1,35 +1,45 @@
-# Kiểm tra khung hình và bản dựng
+# Review: rubric khán giả + thi công
 
-Mẫu chuyển từ bài rari; không ghi “đạt” khi chưa có bằng chứng.
+Theo `references/rubric.md`. Không ghi "đạt" khi chưa có bằng chứng. Chưa kiểm = **N/A** (chặn cổng nếu là trục bắt buộc).
 
-- Phiên bản source / cấu hình:
+- Revision source / cấu hình:
 - Tỷ lệ, kích thước, fps:
-- Contact sheet / bản dựng được kiểm tra:
-- Người hoặc agent kiểm tra:
-- Thời điểm kiểm tra:
+- Bản dựng / contact sheet được kiểm:
+- Người chấm (Center / Astra / chủ phim / người xem chưa đọc brief):
+- Thời điểm:
+- execution_status (Worker): DONE / PARTIAL / BLOCKED
+- acceptance_status (Center / chủ phim): ACCEPTED / REJECTED / PENDING
 
-## Checklist
+## Bảng khán giả
 
-- [ ] Chữ đọc được ở kích thước sử dụng.
-- [ ] Các thành phần nằm trong vùng an toàn đã quy định.
-- [ ] Đúng tài nguyên sản phẩm và chữ đã duyệt.
-- [ ] Font và màu nhất quán.
-- [ ] Khung giữa chuyển tiếp không bị lỗi bố cục.
-- [ ] Hook hai giây đầu rõ.
-- [ ] Khung cuối dùng làm poster được.
-- [ ] Đã nghe / xem để kiểm tra cue âm thanh và cú cắt; ảnh tĩnh không đủ cho mục này.
-- [ ] Mỗi tỷ lệ được kiểm tra riêng.
+| Trục | Ngưỡng | Điểm (hoặc N/A) | Cách kiểm và ai | Bằng chứng (đáp án nguyên văn, timestamp) |
+| --- | --- | --- | --- | --- |
+| A1 Hiểu ngay lợi ích (test giây 5 + kể lại) | 8 | | | |
+| A2 Muốn và biết bước tiếp | 8 | | | |
+| A3 Nhớ đúng thương hiệu | 8 | | | |
 
-## Lỗi có ảnh hưởng lớn nhất
+## Bảng thi công
 
-| Ưu tiên | Mốc / khung / tỷ lệ | Bằng chứng nhìn hoặc nghe thấy | Ảnh hưởng | Sửa biến nào | Khung hoặc đoạn kiểm tra lại | Kết quả |
-| --- | --- | --- | --- | --- | --- | --- |
-| 1 | Điền | Điền | Điền | Điền | Điền | Chưa kiểm tra |
-| 2 | Điền | Điền | Điền | Điền | Điền | Chưa kiểm tra |
-| 3 | Điền | Điền | Điền | Điền | Điền | Chưa kiểm tra |
+| Trục | Ngưỡng | Điểm (hoặc N/A) | Bằng chứng |
+| --- | --- | --- | --- |
+| T1 Sự thật, proof, quyền | 8 | | |
+| T2 Đọc được (360 px), phân cấp | 8 | | |
+| T3 Chuyển động phục vụ ý, nhịp thở | 8 | | |
+| T4 Âm, cấu trúc, sync (đã nghe) | 8 | | |
+| T5 Tái lập, file giao, QA MP4 | 8 | | |
 
-## Điều kiện kết thúc vòng sửa
+Tổng có trọng số (chỉ để so phiên bản): 0,65 × trung bình A + 0,35 × trung bình T = ___
 
-- Đã có bằng chứng mới sau sửa:
-- Lỗi còn lại cần con người quyết định:
-- Chấp nhận hoặc tiếp tục sửa, kèm căn cứ:
+## Ba lỗi lớn nhất (đối chiếu `references/failure-modes.md`)
+
+| Ưu tiên | Mốc / khung / tỷ lệ | Mã lỗi (F..) | Bằng chứng nhìn/nghe | Tầng gây lỗi (type, story, copy, style, timing, audio, renderer) | Sửa biến nào | Đoạn kiểm lại | Kết quả |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | | | | | | | Chưa kiểm |
+| 2 | | | | | | | Chưa kiểm |
+| 3 | | | | | | | Chưa kiểm |
+
+## Kết luận vòng
+
+- Lỗi tầng type/story → quay lại G0/G2, không polish.
+- Phản hồi nguyên văn của chủ phim:
+- Quyết định và căn cứ:

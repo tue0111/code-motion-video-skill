@@ -63,7 +63,7 @@ Không mô tả video mà giao vai trò: "đạo diễn, animator, sound designe
 3. **Character bible:** tỉ lệ, palette lấy từ model sheet, biểu cảm, khoá nhận diện giữ nguyên qua mọi đổi style.
 4. **Beat sheet:** hook 2 giây đầu, mỗi 3–5 s một payoff hình ảnh, khung cuối dẫn về khung đầu.
 5. **Chữ trên màn hình:** lúc nào lời hoặc phụ đề phóng to, lúc nào nằm như sub; bố cục chừa chỗ.
-6. **Gate:** kế hoạch → rig → stills → animatic 960×540 với âm tạm (sửa nhịp trước khi polish) → full → polish → âm → render. Cho xem shotlist; **không trả lời trong 10 phút thì tự tiếp tục** (dùng khi chạy không người trông).
+6. **Gate:** kế hoạch → rig → stills → animatic 960×540 với âm tạm (sửa nhịp trước khi polish) → full → polish → âm → render. Cho xem shotlist và animatic. **Im lặng không phải là duyệt.** Chạy không người trông thì làm tới bản nháp đã được uỷ quyền (shotlist, animatic) rồi dừng chờ chủ phim.
 7. **Subagent theo chương:** viết `docs/ANIMATION_GUIDE.md` trước để mọi subagent code cùng một style; có `STORYBOARD.md` sau lượt đầu (như repo PDoom: chín chương trong `src/ch/`).
 8. **Critic:** mỗi shot ít nhất 3 vòng (xem dưới).
 9. **Giao:** `final.mp4`, `loop_check.mp4`, `poster.png`, `contact.png`, source sạch kèm README.
