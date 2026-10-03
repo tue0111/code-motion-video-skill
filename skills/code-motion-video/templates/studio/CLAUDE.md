@@ -13,19 +13,19 @@ Claude Code đọc file này ở mỗi lượt chạy trong project. **Phạm vi
 ## Nhìn
 - Mặc định bị cấm: tiêu đề giữa màn hình trên nền gradient, mọi thứ fade-in cùng lúc, nhãn ở góc và khung viền, glow trên UI, hạt bung vô cớ, logo hiện cuối kiểu mẫu.
 - Một font display, một font UI. Một màu nhấn, trừ khi brief nói khác. Phân cấp 6:3:1.
-- Cứ 2–4 giây phải có điều mới xảy ra trên màn hình. Không có phách chết.
+- Mặc định thử một thay đổi có nghĩa mỗi 2–4 s cho clip thông tin ngắn. MV/hold/read dài theo phrase và nhu cầu hiểu; ngoại lệ ghi ở shotlist. Không thêm chuyển động trang trí để né detector.
 - Không bịa màn hình sản phẩm, số liệu hay logo. Thiếu asset thì dừng lại hỏi.
 
 ## Âm thanh
-- Có nhạc thì đo bằng `python3 scripts/beats.py track.wav > beats.json` rồi đặt hit lên beat đo được.
+- Có nhạc thì ước lượng bằng `python3 scripts/beats.py track.wav > beats.json` (downbeat chỉ là ứng viên `beats[::4]`, xác nhận meter/phase bằng nghe) rồi đặt hit lên beat đã xác nhận.
 - Không có nhạc thì tổng hợp bằng `node scripts/sfx.mjs cues.json out/sfx.wav --bed <BPM>` trên cùng timeline với hình.
 
 ## Lặp trước khi cho tôi xem
 1. `node render.mjs --verify <các mốc>` phải OK.
 2. Render mỗi phách một khung thành contact sheet (`--sheet`), cộng strip quanh mọi chuyển cảnh (`--strip`). MỞ RA XEM.
-3. Chấm 1–10: hook 2 giây đầu · độ đọc ở cỡ điện thoại (360 px) · chất lượng chuyển động · biến hoá · bố cục · đúng thương hiệu · khớp âm thanh.
-4. Sửa 3 lỗi tệ nhất, chỉ render lại các giây bị ảnh hưởng (`--range`). Lặp đến khi mọi điểm ≥ 8.
-5. Xong mới render full. Ghi điểm và lỗi vào `docs/review_log.md`.
+3. Review theo `references/rubric.md` (trong skill): hai bảng A1–A3 và T1–T5, tập trục bắt buộc/ngưỡng theo gate đã chốt. Chưa kiểm = UNTESTED; không dùng model-estimate thay test người hoặc nghe.
+4. Chọn tối đa ba lỗi có evidence, sửa đúng tầng và kiểm lại đoạn ảnh hưởng (`--range`). Không dùng điểm trung bình để vượt gate.
+5. Chỉ render full khi được giao và đủ approval. Ghi evidence cùng execution_status và acceptance_status vào `docs/review_log.md`; trong mode Center–Worker việc chấm và acceptance thuộc Center/chủ phim.
 
 ## Thư mục
 `docs/` (brief, style_guide, shotlist, review_log) · `refs/` · `assets/` · `lib/` · `index.html` · `render.mjs` · `out/`

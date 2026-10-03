@@ -2,6 +2,8 @@
 
 Mẫu để điền cho một dự án cụ thể; không có dữ kiện sản phẩm được mặc định là thật.
 
+> Điền và duyệt phần G0 của `brief.md` trước khi triển khai tám phần này. Đây là bản triển khai, không thay brief revision, asset manifest hoặc approval G2.
+
 1. **Mục tiêu:** khán giả; một câu cần nhớ; thời lượng và tỷ lệ.
 2. **Storyboard và chủ thể:** các cảnh; nhiệm vụ mỗi cảnh; chủ thể, phần phụ và nền.
 3. **Quỹ đạo và camera:** điểm đầu, đường đi, điểm cuối; camera di chuyển để làm rõ điều gì.

@@ -1,19 +1,20 @@
 # Rubric — hiểu / muốn / nhớ (khán giả) và thi công
 
-**Trạng thái: áp dụng từ v0.4.0**, thay 7 trục cũ ("lặp tới khi mọi điểm ≥ 8"). Soạn: Sol/Astra (K-01), Center chốt, Jev cân (xem `case-film01.md` §Quyết định). Lý do: ở film-01, Center chấm v2 ≥ 8 mọi trục thi công nhưng chủ phim vẫn chê "chán" và thích v1 hơn. 7 trục cũ đo thi công, không đo người xem có hiểu, có muốn, có nhớ hay không.
+**Trạng thái: áp dụng từ v0.4.0**, thay 7 trục cũ (quy tắc cũ đã bỏ: "lặp tới khi mọi điểm ≥ 8"; chỉ còn là lịch sử). Soạn: Sol/Astra (K-01), Center chốt, Jev cân (xem `case-film01.md` §Quyết định). Lý do: ở film-01, Center chấm v2 ≥ 8 mọi trục thi công nhưng chủ phim vẫn chê "chán" và thích v1 hơn. 7 trục cũ đo thi công, không đo người xem có hiểu, có muốn, có nhớ hay không.
 
 **Cách kết luận (chốt):**
-1. **Cổng = hai bảng riêng**, mỗi trục có ngưỡng chốt **trước rough** (mặc định mọi trục bắt buộc ≥ 8). Không lấy trung bình để vượt cổng. Vi phạm quyền/nội dung/số liệu là blocker độc lập.
-2. **Tổng có trọng số 65 % khán giả / 35 % thi công** chỉ dùng để **so hai phiên bản** với nhau, không dùng để vượt cổng.
-3. **Chưa kiểm = N/A**. N/A ở trục bắt buộc thì **chưa qua cổng**. Model tự chấm A1–A3 chỉ là dự đoán, ghi "model-estimate"; điểm A thật cần người chưa biết brief (hoặc chủ phim, ghi rõ là ai).
+1. **Cổng = hai bảng riêng**, mỗi trục có ngưỡng chốt **trước rough** (điểm xuất phát đề xuất: mốc 8 cho mọi trục bắt buộc; chỉ thành ngưỡng khi Center/chủ phim duyệt). Không lấy trung bình để vượt cổng. Vi phạm quyền/nội dung/số liệu là blocker độc lập.
+2. **Tổng có trọng số 65 % khán giả / 35 % thi công** chỉ so các bản có **cùng tập trục áp dụng, ngưỡng và protocol**, có đủ điểm thực cần so. Còn trục UNTESTED thì tổng = N/A; không bỏ ô, không thay bằng 0/8, không trộn model-estimate với điểm người. Tổng không vượt cổng.
+3. **Chưa kiểm = UNTESTED** (trước đây ghi "N/A"). UNTESTED ở trục bắt buộc của gate hiện tại thì **chưa qua cổng**. Model tự chấm A1–A3 chỉ là dự đoán, ghi "model-estimate"; điểm A thật cần người chưa biết brief (hoặc chủ phim, ghi rõ là ai).
 4. Tách **execution_status** (Worker: DONE/PARTIAL/BLOCKED) khỏi **acceptance_status** (Center/chủ phim: ACCEPTED/REJECTED/PENDING).
+5. **Khóa `mandatory_axes` cho từng gate trước review.** Trạng thái evidence: `TESTED`, `UNTESTED`, `NOT_APPLICABLE` (có lý do và người duyệt). "N/A" cũ nghĩa là chưa kiểm, không tự nghĩa là không áp dụng. UNTESTED ở trục bắt buộc của gate hiện tại chặn gate; G2 không đòi evidence MP4 final.
 
 ## Cách dùng thang 1–10
 
 - 1–3: thiếu/sai nền tảng của trục; 4/6/8/10 là mốc dưới đây. 5/7/9 là trạng thái trung gian, ghi tiêu chí nào đã đạt và còn thiếu.
-- Mỗi điểm phải có: revision, người chấm, timestamp, bằng chứng, phương pháp và giới hạn. **Chưa kiểm = N/A**, không biến thành 0 hoặc 8; N/A của trục bắt buộc thì chưa qua gate.
+- Mỗi điểm phải có: revision, người chấm, timestamp, bằng chứng, phương pháp và giới hạn. **Chưa kiểm = UNTESTED**, không biến thành 0 hoặc 8; UNTESTED của trục bắt buộc thì chưa qua gate.
 - **10** là đạt toàn bộ điều đã kiểm trong phạm vi brief, không bảo đảm conversion hoặc mọi khán giả đều thích.
-- Đề xuất báo hai bảng riêng, không lấy trung bình chung. Chốt ngưỡng theo dự án trước rough; cho bản quảng cáo VSC có thể đề xuất mọi trục bắt buộc ≥8, nhưng phải được Center/chủ phim duyệt. Vi phạm quyền/nội dung/số liệu là blocker độc lập, không bù bằng điểm cao.
+- Đề xuất báo hai bảng riêng, không lấy trung bình chung. Chốt ngưỡng theo dự án trước rough; cho bản quảng cáo VSC có thể đề xuất mốc 8 cho mọi trục bắt buộc, nhưng phải được Center/chủ phim duyệt. Vi phạm quyền/nội dung/số liệu là blocker độc lập, không bù bằng điểm cao.
 
 ## Trục khán giả
 
@@ -24,6 +25,16 @@
 | **A3 — Nhớ đúng thương hiệu và liên tưởng.** Hỏi tên/giá trị không gợi ý sau phim và sau khoảng chờ được chốt trước test. | Nhớ hiệu ứng nhưng nhầm/không nhớ brand | Nhớ tên ngay nhưng không gắn giá trị | Nhớ đúng tên và một lời hứa sau khoảng chờ đã định | Nhớ đúng tên/lợi ích/dấu hiệu riêng qua các tình huống test đã định, không nhầm đối thủ | Wordmark và bracket VSC có trong v1/v2, end card rõ ở 56/58 s. brief/style định signature; chưa đo recall nên không cho điểm từ logo hiện diện. |
 
 Film type thay đổi câu hỏi A1/A2: MV đo motif/nghệ sĩ và nghe/lưu; manifesto đo niềm tin và đồng hành. Ngoại lệ “hiểu sản phẩm trong 5 s” phải ghi trước test, không sửa sau khi bị chê. Chủ phim có quyền chốt gu; phản hồi một người không đại diện cho thị trường.
+
+### Mốc A theo type (ngoại lệ, khóa trước test)
+
+| Type | A1 mốc đạt theo test đã chốt | A2 mốc đạt theo test đã chốt | A3 mốc đạt theo test đã chốt |
+| --- | --- | --- | --- |
+| Sản phẩm | Nói đúng loại/lợi ích và quan hệ chính | Hiểu giá trị và bước tiếp cụ thể | Nhớ brand gắn lời hứa |
+| MV | Nhận motif và hướng cảm xúc đã duyệt | Muốn nghe tiếp/lưu nếu là mục tiêu, phân biệt lời nói với hành vi | Nhớ bài/nghệ sĩ nếu identity là yêu cầu |
+| Manifesto | Hiểu niềm tin và ví dụ | Hiểu lời mời đồng hành | Gắn niềm tin đúng brand |
+
+Đây là diễn giải mục tiêu của mốc 8, cần protocol cụ thể của dự án; giữ mốc 4/6/10 theo thiếu một phần/đạt một phần/đầy đủ tiêu chí đã kiểm, không suy thành conversion. Ngoại lệ được khóa trước test, không sửa sau để đạt.
 
 ## Trục thi công
 

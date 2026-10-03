@@ -4,6 +4,8 @@ Dùng ở **G0**: chọn type chính (và phụ nếu có) **trước** style. S
 
 Các cấu trúc dưới đây là **đề xuất từ kinh nghiệm thông thường**, không phải dữ liệu thị trường hay công thức bảo đảm hiệu quả. Khoảng thời gian [a,b) liên tục, đơn vị giây; mỗi hàng cộng đúng 15/30/60 s. Điều chỉnh theo reads, voice, asset và kênh. Type chính là nhiệm vụ truyền thông; 9:16/15 s là format nên social short có thể chứa demo/brand/explainer.
 
+Lưu **hai trường riêng**: `communication_type` (nhiệm vụ) và `delivery_format` (thời lượng/tỷ lệ/kênh). “Social short” dưới đây là preset đóng gói; có thể đi cùng TVC/demo/explainer. Brief chỉ nói quán cà phê 9:16 15 s chưa đủ suy khai trương, offer hay audience. Ghi type tạm dưới giả định rõ ràng, hỏi mục tiêu khi khóa production.
+
 ## 1. TVC thương hiệu
 
 - **Biết / cảm / làm:** biết thương hiệu gắn với giá trị gì; cảm khác biệt/đồng điệu; nhớ hoặc tìm hiểu.

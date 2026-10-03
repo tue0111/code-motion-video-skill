@@ -29,6 +29,8 @@ screen_x     = (x_layer − cx) * scale_layer + W/2 + pan_px
 - **Pan / tilt** (đổi hướng nhìn): mọi lớp dịch **gần như cùng lượng**. Ở 2D, pan nghĩa là dịch toàn khung, không có parallax.
 - **Roll**: xoay toàn khung quanh tâm. Chỉ dùng có chủ đích và giới hạn góc.
 
+Các phép dịch pan/tilt toàn ảnh là approximation cho lớp ảnh phẳng, không tự tái tạo mọi thay đổi phối cảnh của quay máy trong không gian. Ghi rõ mức fidelity shot cần.
+
 Tất cả là hàm closed-form của t (`kf`, `ease`, `spring`), tuân theo determinism.
 
 ## 17 chuyển động: tác dụng và cách triển khai
@@ -40,7 +42,7 @@ Tất cả là hàm closed-form của t (`kf`, `ease`, `spring`), tuân theo det
 | 3 | Truck | Cả máy đi ngang, hướng giữ nguyên | quan sát từ bên; tiền cảnh che gây cách biệt/nhòm ngó | Đổi `cx`. Chủ thể đứng yên cũng trôi sang phía ngược lại |
 | 4 | Pedestal | Cả máy lên/xuống | mở rộng từ chi tiết ra toàn cảnh; hạ xuống thì gò bó | Đổi `cy`, lộ hoặc che bề mặt. Khác tilt: pedestal đổi độ cao, tilt đổi hướng |
 | 5 | Tracking | Đi cùng chủ thể | đồng hành, nhập vai; bám sau lưng thì căng | `cx = subject_x(t) + offset`. Chủ thể ổn định trong khung, nền trôi |
-| 6 | Orbit | Đi vòng cung quanh chủ thể, luôn hướng vào nó | nhấn khoảnh khắc; bị vây quanh | Góc θ(t). Hai lớp nền dịch ngược nhau. Chủ thể đứng yên, không tự xoay theo camera |
+| 6 | Orbit | Đi vòng cung quanh chủ thể, luôn hướng vào nó | nhấn khoảnh khắc; bị vây quanh | Đổi vị trí camera quanh subject và hướng nhìn; để lộ mặt/occlusion đúng cần geometry hoặc asset nhiều góc phù hợp. Hai lớp nền trượt ngược chỉ là gợi depth (parallax ước lệ), không đủ chứng minh orbit thật. Góc θ(t); chủ thể đứng yên, không tự xoay theo camera |
 | 7 | Parallax | Hiệu ứng: gần nhanh, xa chậm khi camera đổi chỗ | chiều sâu, thời gian trôi | Kết quả của truck/orbit khi có ≥3 lớp độ sâu. Phải ghi rõ tiền, trung, hậu cảnh |
 | 8 | Pan | Đứng tại chỗ, quay ngang | tìm kiếm, chờ đợi; nhanh thì cảnh giác | Dịch ngang toàn khung theo `pan(t)`. Đường chân trời giữ thẳng |
 | 9 | Tilt | Đứng tại chỗ, ngẩng/cúi | ngẩng: kính nể, choáng ngợp. cúi: kéo về hoàn cảnh cụ thể | Dịch dọc toàn khung. Ghi rõ độ cao không đổi |
@@ -57,7 +59,8 @@ Tất cả là hàm closed-form của t (`kf`, `ease`, `spring`), tuân theo det
 
 - Dolly: tiền cảnh và hậu cảnh có đổi tỉ lệ khác nhau không? Nếu scale đều thì đó là zoom.
 - Tracking: chủ thể có ổn định trong khung trong khi nền trôi không?
-- Orbit: các mặt khác nhau của chủ thể có lần lượt hiện ra không, hay chủ thể tự xoay?
+- Orbit hình học: các mặt khác nhau của chủ thể có lần lượt hiện ra không, hay chủ thể tự xoay? Chỉ kiểm thấy mặt khác khi brief thực sự yêu cầu và có geometry/asset hỗ trợ.
+- Parallax ước lệ (hai lớp nền trượt ngược): chỉ kiểm chiều sâu và hướng trượt; không gọi là orbit thật.
 - Whip pan và reveal: khung cuối có dừng hẳn và đủ lâu để đọc không?
 - Camera có làm người xem mất phương hướng không? Theo luật nhóm đối tượng, CAMERA phải mượt, gần như vô hình.
 

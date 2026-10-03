@@ -1,6 +1,6 @@
 {
   "name": "code-motion-video",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Làm video motion bằng code rồi render từng khung ra MP4: brief đạo diễn, timeline, chuyển động, âm thanh, contact sheet, QA.",
   "author": {
     "name": "Tuệ"

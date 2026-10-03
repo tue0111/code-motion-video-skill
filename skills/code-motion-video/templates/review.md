@@ -1,7 +1,8 @@
 # Review: rubric khán giả + thi công
 
-Theo `references/rubric.md`. Không ghi "đạt" khi chưa có bằng chứng. Chưa kiểm = **N/A** (chặn cổng nếu là trục bắt buộc).
+Theo `references/rubric.md`. Không ghi "đạt" khi chưa có bằng chứng. Chưa kiểm = **UNTESTED** (chặn cổng nếu là trục bắt buộc của gate hiện tại). NOT_APPLICABLE chỉ khi có lý do và người duyệt.
 
+- Gate; mandatory_axes (khóa trước review); protocol; evidence_type; approval artifact/revision:
 - Revision source / cấu hình:
 - Tỷ lệ, kích thước, fps:
 - Bản dựng / contact sheet được kiểm:
@@ -12,23 +13,23 @@ Theo `references/rubric.md`. Không ghi "đạt" khi chưa có bằng chứng. C
 
 ## Bảng khán giả
 
-| Trục | Ngưỡng | Điểm (hoặc N/A) | Cách kiểm và ai | Bằng chứng (đáp án nguyên văn, timestamp) |
-| --- | --- | --- | --- | --- |
-| A1 Hiểu ngay lợi ích (test giây 5 + kể lại) | 8 | | | |
-| A2 Muốn và biết bước tiếp | 8 | | | |
-| A3 Nhớ đúng thương hiệu | 8 | | | |
+| Trục | Ngưỡng (theo gate) | Điểm | Evidence status (TESTED / UNTESTED / NOT_APPLICABLE) | Cách kiểm và ai | Bằng chứng (đáp án nguyên văn, timestamp) |
+| --- | --- | --- | --- | --- | --- |
+| A1 Hiểu ngay lợi ích (test giây 5 + kể lại; MV: motif/hướng cảm xúc) | 8 | | | | |
+| A2 Muốn và biết bước tiếp | 8 | | | | |
+| A3 Nhớ đúng thương hiệu | 8 | | | | |
 
 ## Bảng thi công
 
-| Trục | Ngưỡng | Điểm (hoặc N/A) | Bằng chứng |
-| --- | --- | --- | --- |
-| T1 Sự thật, proof, quyền | 8 | | |
-| T2 Đọc được (360 px), phân cấp | 8 | | |
-| T3 Chuyển động phục vụ ý, nhịp thở | 8 | | |
-| T4 Âm, cấu trúc, sync (đã nghe) | 8 | | |
-| T5 Tái lập, file giao, QA MP4 | 8 | | |
+| Trục | Ngưỡng (theo gate) | Điểm | Evidence status | Bằng chứng |
+| --- | --- | --- | --- | --- |
+| T1 Sự thật, proof, quyền | 8 | | | |
+| T2 Đọc được (360 px), phân cấp | 8 | | | |
+| T3 Chuyển động phục vụ ý, nhịp thở | 8 | | | |
+| T4 Âm, cấu trúc, sync (đã nghe) | 8 | | | |
+| T5 Tái lập, file giao, QA MP4 | 8 | | | |
 
-Tổng có trọng số (chỉ để so phiên bản): 0,65 × trung bình A + 0,35 × trung bình T = ___
+Tổng 65/35 (0,65 × trung bình A + 0,35 × trung bình T) chỉ so các bản có cùng tập trục áp dụng, ngưỡng và protocol, có đủ điểm thực cần so. Còn UNTESTED thì tổng = N/A; không bỏ ô, không thay bằng 0/8, không trộn model-estimate với điểm người. Tổng không vượt cổng: ___
 
 ## Ba lỗi lớn nhất (đối chiếu `references/failure-modes.md`)
 

@@ -15,8 +15,11 @@ Nguồn: 李岳 "Codex + GPT-6.1 Sol làm motion video" (02/10/2026), video mẫ
 | Làm | G0–G2 cùng chủ phim, viết lệnh việc, chấm rubric, chốt acceptance, viết bản cuối của skill/tài liệu | phản biện kế hoạch **trước** build (type, story, rủi ro, xung đột tài liệu); chấm mù bản render **song song** với Center; soạn nháp kiến thức | code theo lệnh, tự kiểm (`--verify`, sheet, strip), render, báo cáo; tiện ích (git push) |
 | Không làm | code scene khi Worker đang giữ file | sửa file của Center; thi công | tự chấm thẩm mỹ; làm ngoài phạm vi |
 
-- **Chọn model theo lệnh:** watcher không ép model thì dùng model mặc định trong `/model` của Codex. Lệnh plan/critic chạy `-m <astra>`, lệnh gia công chạy `-m gpt-6.1-sol` (hoặc chạy hai watcher, mỗi cái một `-Model`). Báo cáo phải ghi model thực chạy (dòng `model:` trong log), không nhận nhãn vai thay cho model.
-- **Hai bên cùng thấy một lỗi = lỗi thật.** Lệch nhau thì Center xem lại bằng mắt và chốt. Điểm bất đồng có tham số thì đưa Jev cân rồi ghi vào `decisions.md`.
+- **Chọn model theo lệnh:** watcher không ép model thì dùng model mặc định trong `/model` của Codex. Muốn chọn model/effort cho **từng lệnh**, ghi trong **5 dòng đầu** của file TASK: `model: <slug>` và/hoặc `effort: low|medium|high|xhigh` (vd `model: gpt-6.1-sol`). Dòng đó ghi đè `-Model`/`-Effort` của watcher cho đúng lệnh ấy; `logs/watcher.log` ghi `model=` và `effort=` đã yêu cầu cho mỗi lệnh. Không có dòng thì dùng `-Model`/`-Effort` của watcher, trống thì theo config Codex.
+- **Một watcher cho mỗi root/hàng đợi.** `watch-tasks.ps1` giữ khoá `tasks\watcher.lock` (chứa PID): chạy lần hai trong cùng root thì in lỗi đỏ và thoát exit 1; khoá tự xoá khi watcher thoát bình thường (`tasks\STOP`, `-Once`, Ctrl+C), khoá của tiến trình đã chết bị ghi đè. Đừng bật hai watcher cùng hàng đợi: chúng không claim từng task, sẽ chạy trùng và ghi đè log/report. Đổi model bằng dòng `model:` trong TASK, hoặc dừng watcher rồi chạy lại với `-Model` khác giữa hai task. Hai watcher chỉ dùng với root/queue riêng.
+- **Model requested và model actual là hai trường.** Đối chiếu model actual từ log runtime của đúng task; không gán Astra/Sol từ vai hoặc báo cáo cũ. Thiếu bằng chứng thì ghi UNKNOWN. Dòng `model:` trong TASK và `model=` trong watcher.log chỉ là model đã yêu cầu.
+- **Hai critic đồng thuận làm tăng ưu tiên kiểm; xác nhận vẫn cần evidence cụ thể.** Bất đồng giải bằng artifact và tiêu chí, không bỏ phiếu thành sự thật. Center xem lại bằng mắt và chốt. Điểm bất đồng có tham số thì đưa Jev cân rồi ghi vào `decisions.md`.
+- **Loại lệnh (`task_kind`):** production (scene/render, G3–G6), planning, doc-review, utility; xem `templates/center/TASK.template.md` và `templates/center/AGENTS.md`. Lệnh planning/doc-review không buộc chạy renderer; không bắt K-xx render để lập kế hoạch.
 - **Vòng kiến thức (K-xx):** Astra đọc skill + dữ liệu thật của dự án, viết `gap_analysis`, đề xuất, câu hỏi cho Center → Center đọc, Jev cân điểm bất đồng, viết bản cuối vào repo → vòng sau Astra dò lỗi bản cuối.
 - **Đẩy GitHub qua Worker:** máy người dùng có git và đăng nhập sẵn. Center đặt file vào `knowledge/gh_incoming/` + `COMMIT_MSG.txt`, lệnh tiện ích clone/pull → chép đè → commit → push. Đặt `user.name`/`user.email` **riêng cho repo** (không `--global`). Push đòi đăng nhập thì Worker dừng `BLOCKED`, không tự nhập mật khẩu/token.
 - **Hạn mức:** Codex có thể hết hạn mức giữa hàng đợi (log: "You've hit your usage limit… try again at HH:MM"). Lệnh sau thoát ngay với exit 1. Xếp lệnh theo ưu tiên, lệnh nhỏ, và hẹn xếp lại sau giờ reset.
@@ -26,7 +29,7 @@ Nguồn: 李岳 "Codex + GPT-6.1 Sol làm motion video" (02/10/2026), video mẫ
 | | Center (Claude) | Worker (Codex) |
 |---|---|---|
 | Sở hữu | `docs/brief.md`, `style_guide.md`, `shotlist.md`, `review_log.md`, `tasks/**`, `AGENTS.md` | `index.html`, `scenes/**`, `out/**`, `reports/**` |
-| Làm | G1–G2 một mình; viết lệnh việc; chấm điểm khung; quyết định sửa gì; nghiệm thu cuối | Code theo lệnh; tự kiểm (`--verify`, `--sheet`, `--strip`); render; báo cáo |
+| Làm | G0–G2 cùng chủ phim; viết lệnh việc; chấm điểm khung; quyết định sửa gì; nghiệm thu cuối | Code theo lệnh; tự kiểm (`--verify`, `--sheet`, `--strip`); render; báo cáo |
 | Không làm | Không code scene khi Worker đang giữ file đó (tránh ghi đè) | Không sửa docs của Center; không tự chấm thẩm mỹ; không làm ngoài phạm vi |
 
 ## Kênh liên lạc: thư mục phim là hộp thư
@@ -34,20 +37,20 @@ Nguồn: 李岳 "Codex + GPT-6.1 Sol làm motion video" (02/10/2026), video mẫ
 film/
   AGENTS.md            luật nhà + giao thức Worker (templates/center/AGENTS.md)
   CLAUDE.md            luật nhà (templates/studio/CLAUDE.md)
-  center/watch-tasks.ps1   hộp thư: thấy tasks/queue/TASK-*.md → chạy `codex exec` → reports/
+  center/watch-tasks.ps1   hộp thư: thấy tasks/queue/TASK-*.md → chạy `codex exec` → reports/ (khoá tasks/watcher.lock)
   center/setup.ps1     cài playwright/chromium, kiểm node/ffmpeg/codex → logs/setup.txt
   docs/  tasks/queue/  tasks/done/  reports/  logs/  assets/  lib/  scenes/  out/check/
 ```
-- **Kích hoạt:** người dùng chạy một lần `powershell -ExecutionPolicy Bypass -File center\watch-tasks.ps1` trong thư mục phim. Watcher gọi `codex exec --skip-git-repo-check -C <film> -s workspace-write -c model_reasoning_effort=high -o reports/ID.last.txt "<lệnh>"`. Center tắt từ xa bằng cách ghi file `tasks/STOP`.
-- **Vì sao không gõ thẳng vào terminal:** computer use chỉ cấp quyền "xem + click" cho terminal, IDE và File Explorer, không cho gõ phím. Cách làm đã chạy thật: Center ghi `START-CENTER.cmd` vào thư mục phim (`device_commit_files`), mở File Explorer, **double-click** file đó. Nó chạy `setup.ps1` rồi bật `watch-tasks.ps1` trong cửa sổ riêng. Cập nhật watcher thì ghi `tasks/STOP` (watcher cũ tự tắt sau lệnh đang chạy), đẩy script mới, double-click lại. Chỉ xếp lệnh mới vào hàng **sau khi** watcher mới đã chạy, nếu không watcher cũ sẽ nhận lệnh trước khi đọc STOP.
+- **Kích hoạt:** người dùng chạy một lần `powershell -ExecutionPolicy Bypass -File center\watch-tasks.ps1` trong thư mục phim. Watcher gọi `codex exec --skip-git-repo-check -C <film> -s workspace-write [-c model_reasoning_effort=<effort>] [-m <model>] -o reports/ID.last.txt "<lệnh>"` (hai cờ trong ngoặc chỉ có khi đặt bằng tham số watcher hoặc dòng đầu TASK). Một watcher mỗi root (khoá `tasks\watcher.lock`). Center tắt từ xa bằng cách ghi file `tasks/STOP`.
+- **Vì sao không gõ thẳng vào terminal:** computer use chỉ cấp quyền "xem + click" cho terminal, IDE và File Explorer, không cho gõ phím. Cách làm đã chạy thật: Center ghi `START-CENTER.cmd` vào thư mục phim (`device_commit_files`), mở File Explorer, **double-click** file đó. Nó chạy `setup.ps1` rồi bật `watch-tasks.ps1` trong cửa sổ riêng. Cập nhật watcher thì ghi `tasks/STOP` (watcher cũ tự tắt sau lệnh đang chạy), đẩy script mới, double-click lại. Chỉ xếp lệnh mới vào hàng **sau khi** watcher mới đã chạy, nếu không watcher cũ sẽ nhận lệnh trước khi đọc STOP. Double-click khi watcher cũ còn sống sẽ bị khoá `tasks\watcher.lock` từ chối (thông báo đỏ, exit 1): chờ cửa sổ cũ đóng rồi chạy lại.
 - **Center đọc kết quả:** `device_list_dir reports/` → có `TASK-NN.done.json` là xong → stage `reports/TASK-NN.md` và `out/check/TASK-NN-*.png` → Read ảnh → chấm điểm. Cờ của CLI có thể đổi giữa phiên bản: đọc `logs/codex-exec-help.txt` nếu exit ≠ 0.
 - **Sandbox `workspace-write`:** Worker chỉ ghi trong thư mục phim, không có mạng. Mọi thứ cần tải (playwright, font, asset) phải xong ở `setup.ps1` hoặc do Center đưa vào `assets/` trước.
 
 ## Vòng làm việc
-1. **G1–G2 (chỉ Center):** brief → phân tích tham chiếu → `style_guide.md` (palette hex, font, 6:3:1, nhóm chuyển động, camera) → `shotlist.md` (beat, trạng thái vào/ra, reads, cue âm, **mỗi đoạn một bố cục khác nhau**) → người dùng duyệt.
+1. **G0 → G1 → G2 (Center cùng chủ phim):** G0 chốt mục tiêu, loại phim và giả thuyết hook (chưa đồng nghĩa duyệt timing) → G1 brief + asset + tham chiếu → `style_guide.md` (palette hex, font, 6:3:1, nhóm chuyển động, camera) → `shotlist.md` (beat, trạng thái vào/ra, reads nằm trong shot, cue âm, **mỗi đoạn một bố cục khác nhau**) → G2 storyboard + animatic tốc độ thật của đúng revision, chủ phim ghi duyệt (artifact, revision, người, timestamp). Worker chỉ build production sau approval đó; animatic đơn giản trong phạm vi preproduction được giao thì làm được trước.
 2. **TASK-01 (G3 khung xương):** Worker dựng `index.html` + `seek(t)`, đặt key pose mỗi shot, chưa cần chuyển động mượt. Bằng chứng: sheet các mốc key pose.
 3. **TASK-02..k (G4 rough):** mỗi lệnh 1–3 shot liền nhau, có chuyển cảnh. Lệnh nhỏ thì Worker ít lạc và Center chấm dễ.
-4. **Critic sau mỗi báo cáo:** Center xem sheet, strip, phone; chấm 1–10 trên 7 trục; ghi `review_log.md`; viết lệnh sửa **chỉ 3 lỗi lớn nhất**, mỗi lỗi có timestamp, bằng chứng, biến và kết quả mong muốn.
+4. **Critic sau mỗi báo cáo:** Center xem sheet, strip, phone; review theo `rubric.md` (A1–A3 + T1–T5) với `mandatory_axes` và ngưỡng đã khóa cho gate hiện tại; ghi `review_log.md` kèm approval; viết lệnh sửa **chỉ 3 lỗi lớn nhất**, mỗi lỗi có timestamp, bằng chứng, biến và kết quả mong muốn.
 5. **G6:** lệnh render full `--sub 4` + `sfx.mjs`/nhạc + `node scripts/qa.mjs`. Center tự stage MP4, trích khung, nghe lại các mốc cue trước khi nghiệm thu.
 
 ## Kết quả chạy thật (02/10/2026, Windows, codex-cli 0.159.3)
@@ -60,7 +63,7 @@ film/
 - **Font khi GitHub raw bị chặn (403) ở sandbox cloud:** lấy từ npm: `npm pack @fontsource-variable/<font>` (registry npm được phép). Gói có woff2 và CSS `unicode-range`. Với CJK, chỉ giữ các chunk phủ đúng ký tự trong brief/shotlist (khoảng 10 chunk, dưới 1 MB), viết lại một `assets/fonts/fonts.css`, rồi commit thẳng vào máy. Không cần chạy script tải trên PC. Worker chờ font bằng `document.fonts.load(font, '<chuỗi CJK>')`.
 - Watcher có thể đã tắt (cửa sổ bị đóng). Sau khi xếp lệnh, kiểm `logs/` sau một chu kỳ poll: không có `TASK-NN.log` mới thì chạy lại launcher.
 
-- **Quyết định có tham số bằng Jev (TypeSafe Decisions API, MCP `jev_decide`)** khi Center không tự kiểm được bằng giác quan (ví dụ không nghe được nhạc): đưa số đo + quan sát vào `state`, hỏi kiểu `noul` (accept?), `score` (mức rủi ro theo thang), `choice` (sửa ngay / sau hình / không sửa). Ghi xác suất vào `review_log.md` và vào lệnh việc kế tiếp. Ví dụ thật: TASK-03 nhạc → accept 0,75, đơn điệu 2,92/4, sửa sau hình 0,79.
+- **Quyết định có tham số bằng Jev (TypeSafe Decisions API, MCP `jev_decide`)** khi Center không tự kiểm được bằng giác quan (ví dụ không nghe được nhạc): đưa số đo + quan sát vào `state`, hỏi kiểu `noul` (accept?), `score` (mức rủi ro theo thang), `choice` (sửa ngay / sau hình / không sửa). Ghi xác suất vào `review_log.md` và vào lệnh việc kế tiếp. Ví dụ thật: TASK-03 nhạc → accept 0,75, đơn điệu 2,92/4, sửa sau hình 0,79. Kết quả là phán đoán trên state đã gửi: lưu typed answer, probabilities/confidence nếu có. Jev không chứng minh đã nghe/xem và không thay acceptance của con người; trục nghe (T4) vẫn UNTESTED cho tới khi có người nghe.
 
 ## Viết lệnh việc cho GPT (điều rút ra)
 - **Tách rõ "cái gì" và "làm sao":** Center chốt trạng thái, mốc, cảm giác. Worker chọn cách code. Ghi luật cấm cụ thể ("không dùng lại bố cục chữ trái/ảnh phải của S02"), vì "làm cho cool" sẽ quay về mặc định.

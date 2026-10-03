@@ -9,7 +9,7 @@
 - Timing: sheet bước cố định 0,1–0,15 s, đọc theo thứ tự như người xem; đếm số khung mỗi read nhận được.
 - Ghép sheet bằng ffmpeg `tile` (`-vf scale=480:-2` rồi `-filter_complex tile=4xN`).
 
-Checklist khung:
+Checklist khung (hữu ích để soi ảnh, **không bao hết acceptance**; acceptance theo `rubric.md`):
 ```
 [ ] Chữ đọc được ở cỡ điện thoại      [ ] Không phần tử nào vượt safe area
 [ ] Asset sản phẩm thật, không bịa    [ ] Font + màu nhất quán giữa cảnh
@@ -25,7 +25,7 @@ Prompt critic (tự áp dụng hoặc giao subagent):
 Tìm 3 lỗi lớn nhất. Mỗi lỗi: mốc thời gian/khung, bằng chứng nhìn thấy, tác hại, biến cần sửa, khung sẽ render lại.
 Chỉ vá những đoạn đó rồi render lại đúng các khung bị ảnh hưởng.
 ```
-Chấm điểm: hook, độ đọc, liên tục, chuyển động, đồng bộ âm thanh. Ghi mỗi vòng: phiên bản → khung → lỗi → biến → sửa → bằng chứng mới. Không dùng số dòng code làm thước đo chất lượng.
+Chấm điểm theo `references/rubric.md`: bảng khán giả A1–A3 tách khỏi bảng thi công T1–T5; `mandatory_axes` và ngưỡng khóa trước review theo gate; chưa kiểm = UNTESTED; điểm model là model-estimate, không thay người xem/nghe (protocol xem rubric và `templates/review.md`). Ghi mỗi vòng: phiên bản → khung → lỗi → biến → sửa → bằng chứng mới. Không dùng số dòng code làm thước đo chất lượng.
 
 
 ### 11. QA trên chính file MP4 (preview không đủ)
@@ -34,6 +34,6 @@ Chấm điểm: hook, độ đọc, liên tục, chuyển động, đồng bộ 
 - Trích khung từ MP4 từng cái một (`ffmpeg -ss T -i out.mp4 -frames:v 1`) — render có thể khác snapshot (vd một `visibility: visible` lộ trên toàn video).
 - Quét khung đen/trống: `-vf "scale=64:36,signalstats,metadata=print:key=lavfi.signalstats.YAVG:file=-"`, YAVG < 20 là đáng ngờ.
 - Quét khung đứng hình (diff khung liên tiếp) khi có video layer.
-- Loudness: `volumedetect`; voice ~ −16 LUFS (`loudnorm`). Spot-check sync ở đầu/giữa/cuối.
-- Khung đầu là cover được thiết kế, không đen (có thể thêm 1 s cover + 1 s lặng, nhúng `attached_pic`). Nhạc không bị cắt giữa câu.
+- Đo integrated loudness/true peak bằng `loudnorm` hoặc meter tương đương (voice ~ −16 LUFS); `volumedetect` chỉ báo sample peak/mean, không gắn nhãn LUFS. Playback có tiếng để kiểm cảm nhận và sync đầu/giữa/cuối.
+- Poster frame tách riêng theo deliverable. Không tự thêm cover/lặng vào timeline đã khóa. Nếu chủ phim yêu cầu prepend, tăng revision và cập nhật duration, cue, shotlist, expected frames trước QA. Metadata/`attached_pic` không thay thế opening được thiết kế. Khung đầu của phim không đen; nhạc không bị cắt giữa câu.
 

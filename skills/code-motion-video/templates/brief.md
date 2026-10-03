@@ -2,6 +2,23 @@
 
 Mẫu chuyển từ bài rari; các ô trống phải được điền bằng dữ kiện của dự án.
 
+## Revision, nguồn và approval (điền trước G0)
+
+```text
+Brief ID / revision / người sở hữu:
+Facts từ người dùng:
+Giả định đang thử (chưa duyệt):
+Thiếu dữ kiện và cảnh bị ảnh hưởng:
+Communication type / lý do / loại bị loại:
+Delivery format (ratio, duration, fps, platform):
+Câu hỏi test giây 5 theo type / câu trả lời kỳ vọng:
+Mandatory axes + ngưỡng theo gate / người chốt:
+G0 direction approval:
+G2 artifact + revision/hash + approver + timestamp + decision:
+```
+
+Ô chưa biết ghi `UNKNOWN` hoặc `PENDING`; không giả checksum, quyền hay approval.
+
 ## G0: đạo diễn (điền trước style)
 
 - Người xem là ai, xem ở đâu, đã biết gì về sản phẩm:
@@ -9,9 +26,9 @@ Mẫu chuyển từ bài rari; các ô trống phải được điền bằng d�
 - **Cảm:**
 - **Làm:** hành động quan sát được (CTA):
 - **Loại phim chính / phụ** (`references/film-types.md`), lý do, loại bị loại và vì sao:
-- **Câu trả lời mong muốn ở giây 5** cho "Đây là gì, giúp gì?":
+- **Câu trả lời mong muốn ở giây 5** (câu hỏi theo type đã ghi ở khối trên; sản phẩm: "Đây là gì, giúp gì?"; MV: motif/hướng cảm xúc/identity phù hợp):
 - Đồng hồ chính: nhạc / voice / hành động:
-- Ngưỡng rubric chốt trước rough (A1–A3, T1–T5):
+- Ngưỡng rubric và `mandatory_axes` chốt trước rough (A1–A3, T1–T5; xem `references/rubric.md`):
 
 - Thông điệp người xem cần nhớ trong một câu:
 - Sản phẩm:
@@ -29,9 +46,13 @@ Mẫu chuyển từ bài rari; các ô trống phải được điền bằng d�
 
 ## Manifest asset và quyền
 
-| Asset | Tác giả / nguồn | Bằng chứng quyền | Được hiện phần nào (vd prompt video: có, prompt ảnh: không) | Credit | Cảnh |
+| Asset ID | Source/revision | SHA-256 khi có file | Quyền và evidence | Allowed use/crop/privacy (vd prompt video: có, prompt ảnh: không) | Credit | Scene IDs | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Điền | Điền | UNKNOWN | UNKNOWN | Điền | Điền | Điền | PENDING |
+
+| Claim ID | Nội dung chính xác | Source/revision | Proof/asset IDs | Giới hạn claim | Người duyệt/status |
 | --- | --- | --- | --- | --- | --- |
-| Điền | Điền | Điền | Điền | Điền | Điền |
+| Điền | Điền | Điền | Điền | Điền | PENDING |
 
 ## Tài nguyên thật
 
