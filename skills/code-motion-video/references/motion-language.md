@@ -25,3 +25,5 @@ MASCOT     tinh nghịch, rõ ý đồ
 
 **Ánh sáng:** một hướng đèn chính thống nhất toàn phim; đèn bù yếu giữ chi tiết vùng tối; đèn viền tách khỏi nền; bóng tiếp xúc sát đất để vật "đứng". Khi vật xoay/đổi hình, highlight chạy theo bề mặt. Cảnh vũ trụ hay bị cháy sáng — yêu cầu màu thật.
 
+Pose đồng dạng có chủ đích (để đọc sai khác) khác với twinning chuyển động; đèn biểu hiện chỉ theo brief: xem FG-12 và điều kiện ánh màu trong `references/film-grounding.md`.
+

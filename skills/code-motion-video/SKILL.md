@@ -112,6 +112,7 @@ Cần agent có shell (Claude Code / Codex / Cowork) để render và tự nhìn
 | `references/motion-language.md` | Thiết kế chuyển động, vật lý, ánh sáng, nhóm đối tượng |
 | `references/camera-moves.md` | Chọn và code 17 chuyển động camera (dolly/zoom/truck/orbit/whip…), viết camera cho prompt model video |
 | `references/visual-hierarchy-631.md` | Bố cục, màu, ánh sáng, mật độ chi tiết theo 6:3:1; thumbnail test; khung prompt cảnh |
+| `references/film-grounding.md` | Chỉ mục cơ chế staging/G0/G3 theo mã thẻ + nhãn sách (UNTESTED), điều kiện, cụm M01–M08 cần chuỗi; không đổi gate |
 | `references/audio-timing.md` | Voice, MV, BPM ↔ fps, SFX |
 | `references/renderers-and-determinism.md` | Chọn HyperFrames / Remotion / tự viết; bẫy HyperFrames; mẫu renderer |
 | `references/review-and-qa.md` | Contact sheet, checklist khung, QA trên MP4 |

@@ -64,6 +64,8 @@ Tất cả là hàm closed-form của t (`kf`, `ease`, `spring`), tuân theo det
 - Whip pan và reveal: khung cuối có dừng hẳn và đủ lâu để đọc không?
 - Camera có làm người xem mất phương hướng không? Theo luật nhóm đối tượng, CAMERA phải mượt, gần như vô hình.
 
+Hai đường nhìn (máy thấy, nhân vật không thấy) và phần ngoài khung: FG-10 trong `references/film-grounding.md`; key pose không thay strip/reveal theo thời gian (M04).
+
 Lệch chỗ nào thì sửa đúng biến của câu tương ứng (vị trí, hướng hay tiêu cự), không viết lại cả shot.
 
 ## Dùng cho model video (Seedance, Kling, Veo) trong pipeline lai

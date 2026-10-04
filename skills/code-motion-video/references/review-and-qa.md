@@ -19,6 +19,8 @@ Checklist khung (hữu ích để soi ảnh, **không bao hết acceptance**; ac
 [ ] Điểm tiếp xúc chạm thật (chân-đất, tay-đạo cụ)   [ ] Không đoạn chết không có gì xảy ra
 ```
 
+Dấu kiểm một khung theo cơ chế, và cột điều phải kiểm bằng chuỗi (M01–M08): `references/film-grounding.md`. Still PASS không là G4/G6 PASS.
+
 Prompt critic (tự áp dụng hoặc giao subagent):
 ```
 Đừng mô tả ý định. Chỉ phán xét các khung đã render.

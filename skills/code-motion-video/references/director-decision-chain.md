@@ -20,6 +20,8 @@
 | 13. Final — G6 | File giao có đúng nháp đã duyệt? Có decode đủ, audio/PTS đúng, rights đủ, ratio đúng? | Render theo lệnh, QA trên MP4, frame count/stream/loudness, freeze/black có whitelist, sheet final, playback/nhận xét người | Worker execution status khác Center acceptance status. Exit 0 của QA không phủ quyết checklist FAIL. Loop chỉ diff khi brief là loop. |
 | 14. Bàn giao và lesson | Người nhận mở được đúng file? Những gì còn chưa kiểm được là gì? | Filename mới theo revision, SHA-256/bytes, manifest source/config/asset, báo cáo DONE/PARTIAL/BLOCKED, credit; khi có AI worker thêm `model_requested, model_actual, runtime_evidence` vào report | Watcher sở hữu done.json/tasks; Center chốt final và lưu feedback nguyên văn cùng nguyên nhân giả thuyết. |
 
+Bước 5, khi beat cần: hỏi thêm đích–vật cản–khả năng can thiệp–giá phải trả, và ai thấy gì (`references/film-grounding.md`, nhãn sách, UNTESTED; claim/proof thật vẫn bắt buộc).
+
 ## Mẫu một beat kiểm được
 
 `E: người xem biết cách tìm clip → search cinematic → gallery trả clip thật → proof là UI nguồn đã duyệt → input→result→detail → nhãn giữ khi UI ổn → click trên beat → card mở và người xem đọc kết quả.`

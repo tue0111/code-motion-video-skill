@@ -46,6 +46,8 @@ Ba tầng có thể giao nhau: một vật bày trong góc có thể thành tr�
 - Cận cảnh thì vật quan trọng có thể chiếm cả khung. 10% là về **sự chú ý**, không phải diện tích.
 - Khi nào được phá: cảnh phố đông vui (nhiều neon cùng tạo không khí), đối đầu (hai chủ thể ngang sức), hỗn loạn (các yếu tố tranh nhau là đúng ý đồ).
 
+Màu gắn vào vật mang có lịch sử: xem FG-11 trong `references/film-grounding.md` (nhãn sách; không làm bằng chứng cho 6:3:1).
+
 ## Kiểm tra: thumbnail test
 
 Thu contact sheet hoặc khung xuống cỡ thumbnail điện thoại (khoảng 160–240 px ngang):

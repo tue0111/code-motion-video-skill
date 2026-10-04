@@ -61,6 +61,10 @@ Astra rà toàn bộ v0.4.0 (SKILL + 17 references + 11 templates), ra 22 findin
 - **Khác:** downbeat của `beats.py` chỉ là ứng viên; LUFS đo bằng loudnorm; regex `rg` đưa ra ngoài bảng; case film-01 gắn nhãn reported; camera orbit vs parallax ước lệ.
 - Thêm `references/director-mindset.md` và `references/dryrun-g0-examples.md`. Không đổi code render hay example.
 
+## v0.5.0 (film grounding)
+
+Thêm `references/film-grounding.md`: chỉ mục 12 cơ chế dàn cảnh một khung (FG-01…FG-12), mỗi cơ chế một dấu kiểm cho G0, G3 và key pose, cộng annex M01–M08 cho những gì phải xem cả chuỗi. Nhãn nguồn [sách]/[nhiều sách]; mọi mục UNTESTED, chưa thử trên phim thật. Không đổi gate, rubric hay determinism. SKILL.md và năm reference (camera-moves, director-decision-chain, motion-language, review-and-qa, visual-hierarchy-631) có một dòng link.
+
 ## Thử nhanh
 
 ```bash
