@@ -6,8 +6,9 @@
 Brief ID / revision / người sở hữu: vong-tron / r1 / chủ phim (tài khoản ntue2411)
 Facts từ người dùng: 7 ảnh AI đã hoàn thiện (áo dài kem voan, quần tím, hoa lan tím, ô giấy cam, kiến trúc cung đình);
   làm cho cá nhân; đăng lên X; kịch bản "huy động từ bất kỳ đâu"; video được phép tạo qua MCP (Sumi Studio).
-Giả định đang thử (chưa duyệt): 24 s, 4:5, nhạc không lời ngũ cung 80 BPM, motif vòng tròn + gió, chữ "gió qua sân cũ".
-Thiếu dữ kiện và cảnh bị ảnh hưởng: chữ trên phim (S7) — đang là đề xuất; nhạc thật — đang là nhạc tạm tự tổng hợp.
+Quyết định của chủ phim (30/10/2026): KHÔNG có chữ trên phim.
+Giả định đang thử (chưa duyệt): 24 s, 4:5, nhạc không lời ngũ cung 80 BPM, motif vòng tròn + gió.
+Thiếu dữ kiện và cảnh bị ảnh hưởng: nhạc thật — đang là nhạc tạm tự tổng hợp.
 Communication type / lý do / loại bị loại: xem G0.
 Delivery format: 1080×1350 (4:5), 24 s, 30 fps, H.264 + AAC, ≤ 512 MB — đăng X (feed điện thoại + desktop).
 Câu hỏi test giây 5 / câu trả lời kỳ vọng: "Phim này về cái gì, cảm giác gì?" → "một cô gái áo dài ở cung điện cổ, gió, nhẹ, hoài niệm".
@@ -33,7 +34,6 @@ G2 artifact + revision/hash + approver + timestamp + decision: PENDING (animatic
 | Asset ID | Nguồn | Quyền | Dùng cho | Scene |
 | --- | --- | --- | --- | --- |
 | p1–p7 | Ảnh AI chủ phim cung cấp (upload phiên này) | Chủ phim sở hữu/tự tạo — chủ phim xác nhận | Animatic, prompt image-to-video | S1–S7 |
-| CG font | Cormorant Garamond (OFL, @fontsource 5.1.0) | OFL | Chữ S7 | S7 |
 | temp.wav | Tự tổng hợp (`scripts/temp_score.mjs`) | Tự tạo | Chỉ animatic | toàn phim |
 
 Bản đồ ảnh: p1 ngồi ghế cầm ô + bàn kính · p2 nghiêng mặt, ô cam tiền cảnh · p3 soi gương tròn trên cỏ · p4 toàn cảnh bước tới · p5 lần chuỗi hạt · p6 góc thấp cầm lược, cửa gỗ · p7 cầm lược cạnh cửa sổ tròn.
@@ -41,10 +41,10 @@ Bản đồ ảnh: p1 ngồi ghế cầm ô + bàn kính · p2 nghiêng mặt, �
 ## Quy tắc
 
 - Giữ: kem + tím oải hương + ô cam là điểm nhấn duy nhất; gỗ tối; ánh chiều ấm.
-- Tránh: chữ to giữa khung, hiệu ứng lấp lánh/particle, nhạc EDM, nhiều chữ.
+- Tránh: mọi chữ trên phim, hiệu ứng lấp lánh/particle, nhạc EDM.
 - Model video **không** được đổi mặt, trang sức (khuyên tai vỏ trai, nhẫn hoa), hoa lan tím.
 
 ## Bàn giao
 
 - `out/animatic_v1.mp4` (G2) → sau duyệt: 7 clip image-to-video, nhạc thật, `out/final.mp4` 4:5 + poster.
-- Quyết định cần chủ phim duyệt: thứ tự/nhịp (animatic), chữ trên phim, model + ngân sách credit, nhạc.
+- Quyết định cần chủ phim duyệt: thứ tự/nhịp (animatic), model + ngân sách credit, nhạc.

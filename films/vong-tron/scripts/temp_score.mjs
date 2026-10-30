@@ -44,9 +44,9 @@ for (let i = 0; i < L.length; i++) {
 // Whoosh voan: khung 0 và cú quét 2.55–3.6
 function whoosh(t0, len, gain, pan) { let lp = 0; for (let i = 0; i < len * SR; i++) { lp += 0.06 * (noise() - lp); put(Math.round(t0 * SR) + i, lp * Math.sin(Math.PI * i / (len * SR)) * gain, pan); } }
 whoosh(0, 1.6, 0.9, -0.3); whoosh(2.55, 1.05, 1.3, 0.4);
-// Chuông nhỏ khi cửa sổ mở ra gương (17.55) và khi chữ hiện (20.2)
+// Chuông nhỏ khi cửa sổ mở ra gương (17.55)
 function chime(t0, f, gain) { for (let i = 0; i < 3 * SR; i++) { const t = i / SR; put(Math.round(t0 * SR) + i, [1, 2.76, 5.4].reduce((a, h, j) => a + Math.sin(TAU * f * h * t) * Math.exp(-t * (1.2 + j * 1.5)) / (j + 1), 0) * gain, 0.1); } }
-chime(17.55, hz(86), 0.10); chime(20.2, hz(81), 0.07);
+chime(17.55, hz(86), 0.10);
 
 const n = L.length, out = Buffer.alloc(44 + n * 4), soft = x => Math.tanh(x * 1.1);
 out.write('RIFF', 0); out.writeUInt32LE(36 + n * 4, 4); out.write('WAVEfmt ', 8); out.writeUInt32LE(16, 16);

@@ -18,8 +18,8 @@
 
 | Trục | Ngưỡng | Điểm | Status | Bằng chứng |
 | --- | --- | --- | --- | --- |
-| T1 Quyền | 8 | — | UNTESTED | ảnh do chủ phim cung cấp; font OFL; nhạc tự tạo |
-| T2 Đọc được 360 px | 8 | — | UNTESTED | chữ 64 px trên nền sáng, chưa test 360 px |
+| T1 Quyền | 8 | — | UNTESTED | ảnh do chủ phim cung cấp; nhạc tự tạo |
+| T2 Đọc được 360 px | 8 | — | UNTESTED | không có chữ; chưa test điểm neo ở 360 px |
 | T3 Chuyển động/nhịp thở | 8 | — | UNTESTED | sheet + strip đã xem; một đỉnh (iris), nghỉ ở S4 |
 | T4 Sync (đã nghe) | 8 | — | UNTESTED | cắt trên downbeat theo lưới; **chưa ai nghe** — model không nghe được |
 | T5 Tái lập | 8 | — | TESTED | `render.mjs --verify 0,2.9,9.5,17.8,18.3,22` OK |
@@ -30,7 +30,7 @@
 | --- | --- | --- | --- | --- | --- |
 | 1 | 17,4–18,7 | Iris: tâm vòng tròn nhảy từ vị trí cửa sổ sang giữa khung ở 18,0 | renderer | Camera S6 đậu đúng cửa sổ ở 17,55 (`ease` tới IRIS[0]); vòng nở lấy tâm từ cửa sổ thật | strip mới liền mạch |
 | 2 | 2,7–3,3 | Voan quá mỏng, lộ cú cắt S1→S2 | style | Độ đặc voan lần quét ×2,2 | cú cắt nằm dưới voan |
-| 3 | 20–24 | Chữ trắng đè lên tóc/mặt | copy/layout | Chuyển chữ sang mảng trời sáng trong gương, mực nâu tối | still 23,9 đọc rõ |
+| 3 | 20–24 | Chữ trắng đè lên tóc/mặt | copy/layout | Chủ phim chốt bỏ hẳn chữ | đã gỡ chữ và tiếng chuông 20,2 |
 
 ## Lỗi còn lại (biết trước, production xử lý)
 
@@ -41,4 +41,4 @@
 ## Kết luận vòng
 
 - Phản hồi nguyên văn của chủ phim: _(chờ)_
-- Quyết định: chờ duyệt G2 (type, thứ tự, hook, nhịp, chữ) + duyệt ngân sách credit.
+- Quyết định: chủ phim chốt **không có chữ**. Còn chờ duyệt G2 (type, thứ tự, hook, nhịp) + duyệt ngân sách credit.
