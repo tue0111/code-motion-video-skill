@@ -1,6 +1,6 @@
 ---
 name: code-motion-video
-description: Làm video motion bằng code (HTML/SVG/Canvas/GSAP, HyperFrames, Remotion, p5) rồi render từng khung ra MP4: tư duy đạo diễn (chọn loại phim, 5 giây đầu, animatic duyệt sớm), timeline, vật lý chuyển động, âm thanh, rubric khán giả + thi công, contact sheet, QA.
+description: Làm video motion bằng code (HTML/SVG/Canvas/GSAP, HyperFrames, Remotion, p5) rồi render từng khung ra MP4: tư duy đạo diễn (chọn loại phim, 5 giây đầu, animatic duyệt sớm), timeline, vật lý chuyển động, âm thanh, rubric khán giả + thi công, contact sheet, QA. Phim T1 to 9 từ ảnh sinh ra (image → i2v) thì dùng skill t1to9-film.
 ---
 
 # Code Motion Video

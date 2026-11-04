@@ -1,5 +1,11 @@
 # Hướng dẫn cho Codex / agent khác
 
+Repo có hai skill. Chọn đúng skill trước khi làm:
+- Phim ngắn T1 to 9 từ ảnh sinh ra (image → i2v, 9:16, 20–60 s): đọc `skills/t1to9-film/SKILL.md`, rồi chỉ đọc file của cổng đang làm. Chưa có G0 được duyệt thì không viết prompt ảnh. Đường dẫn trên máy nằm trong `skills/t1to9-film/paths.local.md`; thiếu thì hỏi.
+- Video motion dựng bằng code: làm theo các bước dưới.
+
+## code-motion-video
+
 Khi được yêu cầu làm video motion, MV, explainer, kinetic type, product film bằng code (HTML/SVG/Canvas/GSAP, HyperFrames, Remotion, p5):
 
 1. Đọc `skills/code-motion-video/SKILL.md` trước khi viết bất kỳ code animation nào.

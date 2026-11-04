@@ -1,10 +1,39 @@
-# code-motion-video
+# T1 to 9 film skills
+
+Bộ skill làm phim ngắn của T1 to 9, dùng cho Claude (plugin Cowork, account skill) và Codex. Repo có hai skill:
+
+| Skill | Vai trò | Dùng khi |
+|---|---|---|
+| **`t1to9-film`** (chính) | Phim ngắn 9:16 dài 20–60 s từ ảnh sinh ra (image → i2v), đi qua cổng G0–G6: kịch bản, prompt, animatic, pilot, dựng, sửa, giao | Làm một phim T1 to 9 từ ý tưởng tới bản giao |
+| `code-motion-video` (phụ) | Video motion dựng hoàn toàn bằng code (HTML/SVG/Canvas/GSAP, HyperFrames, Remotion, p5), render từng khung ra MP4 | Explainer, kinetic type, product motion; hoặc khi `t1to9-film` cần beat grid, SFX, render code |
+
+## `t1to9-film`
+
+Skill chỉ điều phối. Kiến thức nằm ở nguồn và skill dạy cách tra: thư viện sách điện ảnh (MCP `film-library`, luôn ghi tên sách + `page_label`, không chép nguyên văn), VSC/Vibeshot (style, prompt, chuyển động), [`t1-visual-knowledge`](https://github.com/tue0111/t1-visual-knowledge) (prompt zh-CN + `t1lint`), nhà cung cấp sinh hình/video (Sumi…), Jev.
+
+```
+skills/t1to9-film/
+  SKILL.md                 bảng nguồn, cổng G0–G6, 9 luật cứng, giao thức chi tiền
+  references/              sources, gates, g0-script, film-types (8 loại), camera-moves (46 chuyển động),
+                           prompts, cut-grammar, qa, case-mua-he-cuoi-cap
+  templates/               g0.md, shots.json, ledger.md, approvals.md, paths.example.md
+  scripts/film_qa.py       lint, diff, ranges, color, loudness, freeze
+  LICENSE                  MIT (chỉ chữ và code của skill)
+```
+
+**Cài:** chép `skills/t1to9-film/` vào thư mục skills của Claude (`~/.claude/skills/t1to9-film`), rồi chép `templates/paths.example.md` thành `paths.local.md` cạnh `SKILL.md` và điền đường dẫn trên máy mình. `paths.local.md` không commit.
+
+`film_qa.py` cần Python 3.10+ có `opencv-python` và `numpy`, cùng ffmpeg/ffprobe (biến `FFMPEG`/`FFPROBE`, hoặc `FFMPEG_DIR`, hoặc PATH).
+
+`camera-moves.md` chưng cất từ [aicameramovements.com](https://aicameramovements.com/), thư viện miễn phí cho cộng đồng.
+
+## `code-motion-video` (skill phụ)
 
 Skill làm video motion bằng code, dùng chung cho Claude (Cowork plugin, account skill) và Codex.
 
 Nguồn tổng hợp: 宝玉 (cơ chế), rari "Motion Engineering" (studio + gate), 观默 (ngôn ngữ chuyển động), 南鸢 nuyoah (17 cú máy, phân cấp 6:3:1), Movez (setup studio, 5 mẫu prompt, critic chấm điểm), cùng các repo HyperFrames, ClaudeAnimationBase, claude-video-studio, pdoom-video, claude-animation-skill, Austerlitz, awesome-opus-5-5-videos. Kho dữ liệu thô không nằm trong repo này.
 
-## Cấu trúc
+### Cấu trúc
 
 ```
 .claude-plugin/plugin.json      manifest plugin Cowork
@@ -21,13 +50,13 @@ skills/code-motion-video/
 AGENTS.md                       điểm vào cho Codex
 ```
 
-## Cài
+### Cài
 
 - **Cowork:** cài repo này như một plugin (manifest ở `.claude-plugin/`).
 - **Claude account skill:** chỉ nhận một SKILL.md, nên dùng bản lõi `skills/code-motion-video/SKILL.md`.
 - **Codex:** clone repo, để `AGENTS.md` ở gốc project hoặc copy `skills/code-motion-video/` vào thư mục skills của Codex.
 
-## Đạo diễn trước, đẹp sau (v0.4.0)
+### Đạo diễn trước, đẹp sau (v0.4.0)
 
 Bài học từ một phim thật (`references/case-film01.md`, theo ghi nhận Center): phim kỹ thuật sạch, Center chấm ≥ 8 mọi trục của rubric 7 trục cũ, vẫn bị chủ phim chê vì **chọn sai loại phim**. Từ v0.4.0:
 - **G0** bắt buộc: biết–cảm–làm → chọn loại phim (`references/film-types.md`, 11 loại kèm cấu trúc 15/30/60 s) → câu trả lời mong muốn ở giây 5.
@@ -36,7 +65,7 @@ Bài học từ một phim thật (`references/case-film01.md`, theo ghi nhận 
 - **Checklist một trang** (`references/director-mindset.md`): 15 câu hỏi đạo diễn, đọc trước style và ở mỗi lần review. Ví dụ dry-run G0 trên ba brief ngắn: `references/dryrun-g0-examples.md`.
 - **30 lỗi hay gặp** kèm cách phát hiện bằng máy (`references/failure-modes.md`) và chuỗi 15 bước brief → phim (`references/director-decision-chain.md`).
 
-## Ba bên: Claude đạo diễn · Astra dò lỗi · Sol thi công
+### Ba bên: Claude đạo diễn · Astra dò lỗi · Sol thi công
 
 Claude giữ brief, style guide, shotlist, chấm rubric, chốt nghiệm thu. Astra (model GPT cao nhất) lập kế hoạch, phản biện và dò lỗi. Sol (GPT) code và render theo lệnh việc.
 Hai bên nói chuyện qua file trong thư mục phim: `tasks/queue/TASK-NN.md` → `reports/TASK-NN.md` + `out/check/*.png`. Mỗi root chỉ một watcher (khoá `tasks\watcher.lock`); chọn model/effort cho từng lệnh bằng dòng `model: <slug>` / `effort: <level>` trong 5 dòng đầu của TASK.
@@ -49,7 +78,7 @@ powershell -ExecutionPolicy Bypass -File center\watch-tasks.ps1  # hộp thư: t
 
 Chi tiết: `skills/code-motion-video/references/center-worker.md`.
 
-## v0.4.1 (K-02: audit Astra)
+### v0.4.1 (K-02: audit Astra)
 
 Astra rà toàn bộ v0.4.0 (SKILL + 17 references + 11 templates), ra 22 finding (2 blocker, 16 major, 4 minor); bản này vá cả 22:
 - **Gate/rubric đồng bộ:** G0 ≠ duyệt timing, G2 = animatic đúng revision có người duyệt; prompt mẫu, luật nhà, review template dùng A/T + `mandatory_axes` + TESTED/UNTESTED/NOT_APPLICABLE; bỏ luật "mọi điểm ≥ 8" cũ.
@@ -61,11 +90,11 @@ Astra rà toàn bộ v0.4.0 (SKILL + 17 references + 11 templates), ra 22 findin
 - **Khác:** downbeat của `beats.py` chỉ là ứng viên; LUFS đo bằng loudnorm; regex `rg` đưa ra ngoài bảng; case film-01 gắn nhãn reported; camera orbit vs parallax ước lệ.
 - Thêm `references/director-mindset.md` và `references/dryrun-g0-examples.md`. Không đổi code render hay example.
 
-## v0.5.0 (film grounding)
+### v0.5.0 (film grounding)
 
 Thêm `references/film-grounding.md`: chỉ mục 12 cơ chế dàn cảnh một khung (FG-01…FG-12), mỗi cơ chế một dấu kiểm cho G0, G3 và key pose, cộng annex M01–M08 cho những gì phải xem cả chuỗi. Nhãn nguồn [sách]/[nhiều sách]; mọi mục UNTESTED, chưa thử trên phim thật. Không đổi gate, rubric hay determinism. SKILL.md và năm reference (camera-moves, director-decision-chain, motion-language, review-and-qa, visual-hierarchy-631) có một dòng link.
 
-## Thử nhanh
+### Thử nhanh
 
 ```bash
 cd skills/code-motion-video/examples/minimal

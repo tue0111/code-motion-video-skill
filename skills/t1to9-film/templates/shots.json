@@ -1,0 +1,48 @@
+{
+  "_doc": "Nguồn sự thật cho dựng, diff, ranges. Mỗi shot giữ id cố định qua mọi bản. Thời gian tính bằng giây. usable là giây nguồn đã soi từng khung.",
+  "w": 1080,
+  "h": 1920,
+  "fps": 24,
+  "duration": 28.0,
+  "music": {"file": "audio/music.mp3", "bpm": 89, "drop": 12.28, "beats": "audio/beats.json", "phase_checked_by_ear": false},
+  "clips": [
+    {
+      "id": "S1",
+      "beat": "setup",
+      "verb": "giữ lại",
+      "cast": ["A"],
+      "prop_state": {"in": "trang cuối phẳng", "out": "góc phải dưới gấp lại"},
+      "kind": "video",
+      "img": "img/graded/S1/S1_2.png",
+      "clip": "clips/S1_480.mp4",
+      "model": "seedance-2.0-fast",
+      "res": "480p",
+      "t0": 0.0,
+      "t1": 2.9,
+      "speed": 1.0,
+      "offset": 0.0,
+      "usable": [0.0, 3.6],
+      "group": "noi-that-sang",
+      "required": true
+    },
+    {
+      "id": "S9",
+      "beat": "ký tên",
+      "verb": "khép",
+      "cast": ["A"],
+      "kind": "video",
+      "clip": "clips/S9_480.mp4",
+      "t0": 25.0,
+      "t1": 28.0,
+      "speed": 1.0,
+      "offset": 0.5,
+      "usable": [0.0, 2.5],
+      "hold": {"reason": "giữ khung cuối 0.5s cho chữ ký đọc kịp", "approved": "approvals.md G2 #2"},
+      "required": true
+    }
+  ],
+  "transitions": [
+    {"t": 12.28, "d": 0.12, "kind": "flash_cream", "why": "drop + motif chụp ảnh"}
+  ],
+  "signature": {"t0": 26.0, "asset": "assets/signature/t1to9_white.png"}
+}

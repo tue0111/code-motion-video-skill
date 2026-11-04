@@ -1,7 +1,7 @@
 {
   "name": "code-motion-video",
-  "version": "0.5.0",
-  "description": "Làm video motion bằng code rồi render từng khung ra MP4: brief đạo diễn, timeline, chuyển động, âm thanh, contact sheet, QA.",
+  "version": "0.6.0",
+  "description": "Phim ngắn T1 to 9: t1to9-film (chính, ảnh → i2v → phim 9:16 qua cổng G0–G6) và code-motion-video (phụ, motion bằng code render ra MP4).",
   "author": {
     "name": "Tuệ"
   }

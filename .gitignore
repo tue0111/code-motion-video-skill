@@ -1,3 +1,5 @@
 node_modules/
 out/
 qa/
+paths.local.md
+__pycache__/
