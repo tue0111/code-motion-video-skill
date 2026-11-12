@@ -52,19 +52,19 @@ Rủi ro i2v đều là [suy luận]: clip chỉ 5–10 s, model hay tự thêm 
 - Dấu kiểm: tốc độ đẩy ở giây 1 và giây cuối gần bằng; mưa cùng hướng suốt clip.
 - Rủi ro: không ra long take thật; mưa đổi hướng, đẩy rồi khựng. Shot đẩy chậm đặt cạnh shot máy vung thì gãy, đúng điều sách nói.
 
-**E. Người xem biết trước nhân vật.** [nghề] Cho thấy mối nguy nhân vật không biết rồi kéo dài: bất ngờ cho một giây, hồi hộp cho cả đoạn. Tra: *Hitchcock/Truffaut*, mục quả bom và đứa trẻ (chưa đọc trang).
+**E. Người xem biết trước nhân vật.** [nghề] Cho thấy mối nguy nhân vật không biết rồi kéo dài: bất ngờ cho một giây, hồi hộp cho cả đoạn. [sách] *Hitchcock/Truffaut*, page_label 14 (lời dẫn của Truffaut): hồi hộp là kéo người xem vào làm người chơi thứ ba cùng đạo diễn và phim; một tình huống thường ngày chỉ cần một nốt bất an là mang sẵn kịch. Bản trong thư viện là trích đoạn, không có mục quả bom.
 - Ảnh insert: `特写：桌布下方的闹钟，指针接近十二点，表盘没有数字，桌布边缘下垂`
 - i2v: `闹钟秒针匀速走动，镜头固定，画面其余部分静止`
 - Dấu kiểm: mối nguy đọc được ở khung đầu insert, dưới 0,5 s; mặt nhân vật không có dấu đã biết.
 - Rủi ro: mặt đồng hồ ra số rác, kim quay ngược. Giữ mặt trơn hoặc đổi sang vật không cần chữ (dây cháy, nước dâng).
 
-**F. Thường nhật, vết vỡ, đứng yên.** [nghề] Ba pha: đời thường đều đặn, một chỗ lệch, rồi trạng thái tĩnh. Tra: Schrader, *Transcendental Style in Film* (chưa đọc trang).
+**F. Thường nhật, vết vỡ, đứng yên.** [sách] Schrader, *Transcendental Style in Film*, page_label 87–88: đời thường được giữ cứng và lạnh; chỗ lệch ăn mòn dần lớp vỏ đó; rồi một hành động dứt khoát phá kiểu cách, là lúc duy nhất nhạc dâng và người lộ cảm xúc; sau cùng là cái nhìn tĩnh, không giải quyết chỗ lệch mà vượt qua nó. Hệ quả: vết vỡ là shot duy nhất được nới tiết chế, mọi shot trước phải nén.
 - Ảnh: `固定机位，低机位约坐姿高度，中景：老人在家门口扫地，竹帘挂在门框上，清晨侧光`
 - i2v cảnh trống: `空无一人的门口，竹帘被风轻轻吹动，扫帚靠在墙边，镜头固定`
 - Dấu kiểm: chồng các lần lặp, bố cục trùng; chỉ ánh sáng và một chi tiết đổi.
 - Rủi ro: ảnh sinh riêng lệch bố cục, phá cảm giác lặp. Sửa từ cùng một ảnh gốc (đổi giờ, chi tiết) thay vì sinh mới.
 
-**G. Phi lý điềm tĩnh.** [nghề] Chuyện không thể có được quay và diễn như chuyện thường: không nhạc báo, không ai ngạc nhiên. Tra: Buñuel, *My Last Breath*; Richardson, *Surrealism and Cinema* (chưa đọc trang).
+**G. Phi lý điềm tĩnh.** [nghề] Chuyện không thể có được quay và diễn như chuyện thường: không nhạc báo, không ai ngạc nhiên. [sách] Richardson, *Surrealism and Cinema*, page_label 30 (nói về phim nhiều tập thời câm mà nhóm siêu thực mê): chuyện kỳ lạ trồi lên giữa tình huống thường ngày, quay ở phố thật, nên không khí mơ lại rất vật chất và tỉnh khô, và chính điều đó làm hình lạ hơn.
 - Ảnh: `中景：穿西装的男人坐在客厅沙发上看报纸，膝盖以下浸在平静的水里，白天的普通室内光`
 - i2v: `男人翻过一页报纸，水面只有轻微波动，人物表情平常，镜头固定`
 - Dấu kiểm: chỉ một thứ lạ trong khung; sáng và nét mặt như ảnh đời thường.

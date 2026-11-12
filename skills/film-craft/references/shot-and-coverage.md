@@ -59,7 +59,7 @@ Với ảnh sinh, không có máy thật nên trục phải được viết ra t
 
 Vượt trục có chủ đích dùng được khi quan hệ giữa hai người vừa lật: người đang bị ép trở thành người ép. Vượt đúng tại beat đó, một lần. `[nghề]`
 
-**Luật 30°.** Hai shot liên tiếp cùng một chủ thể trong một cảnh phải dời máy ít nhất 30°, **kể cả khi đã đổi cỡ** (trung sang cận). Không dời thì chỗ cắt đọc như vụn vặt. `[sách]` Pramaggiore & Wallis, *Film: A Critical Introduction*, page_label 234. Chỉ đổi cỡ mà giữ góc đỡ giật nhưng không thay được dời góc. Với ảnh sinh: đổi cỡ hai nấc **và** xoay góc (正面 sang 四分之三侧面), cùng phía trục.
+**Luật 30°.** Hai shot liên tiếp cùng một chủ thể trong một cảnh phải dời máy ít nhất 30°, **kể cả khi đã đổi cỡ** (trung sang cận). Không dời thì chỗ cắt đọc như vụn vặt. `[sách]` Pramaggiore & Wallis, *Film: A Critical Introduction*, page_label 234. Chỉ đổi cỡ mà giữ góc đỡ giật nhưng không thay được dời góc. Với ảnh sinh: đổi cỡ hai nấc **và** xoay góc (正面 sang 四分之三侧面), cùng phía trục. Ngoại lệ có chủ đích: cắt thẳng trục vào gần (punch-in) đúng phách như một dấu nhấn, khi đó nhảy ít nhất hai nấc cỡ cho ra hẳn là cố ý. `[nghề]`
 
 ## 4. Đường nhìn (eyeline)
 
@@ -96,7 +96,7 @@ Mẫu đuổi và lộ thông tin: bảng blocking ở §6.
 - **Khoảng cách là quan hệ.** Hai người cách nhau bao xa, ai quay thân về ai, ai cao hơn trong khung. Viết ba thứ đó trước khi viết nét mặt. `[nghề]`
 - **Tam giác cho ba người.** Ba đầu ở ba độ cao khác nhau (đứng, ngồi, cúi). Ba đầu thẳng hàng thì thành ảnh thẻ. `[nghề]`
 - **Chiều sâu thay chiều ngang.** Khung dọc không đủ rộng để hai người đứng cạnh nhau thoải mái. Xếp theo chiều sâu: một người gần máy lệch một bên, người kia xa hơn lệch bên còn lại. Người gần mờ hay người xa mờ là lựa chọn ai quan trọng. `[suy luận]` Dấu chiều sâu: cỡ tương đối và vật che lấn. `[sách]` Mercado, *The Filmmaker's Eye*, page_label 26.
-- **Một đường chuyển động chủ đạo cho cảnh:** ngang khung, theo chiều sâu, hoặc vòng tròn. `[sách]` Katz, *Film Directing: Cinematic Motion*, page_label 44. T1 to 9 chọn khác: khung dọc mặc định chiều sâu. `[suy luận]`
+- **Một đường chuyển động chủ đạo cho cảnh:** ngang khung, theo chiều sâu, hoặc vòng tròn. `[sách]` Katz, *Film Directing: Cinematic Motion*, page_label 44. Khung dọc thì mặc định chọn chiều sâu. `[suy luận]`
 - **Di chuyển đổi quan hệ.** Bước tới, quay lưng, ngồi xuống, ra khỏi khung. Mỗi beat một lần đổi vị trí thay vì đổi nét mặt; với i2v đó là hành động chính của clip. `[nghề]`
 - **Để trống phía trước hướng nhìn.** Nhìn sang phải thì đứng lệch trái. Dồn sát mép phía đang nhìn là cảm giác bị chặn, chỉ dùng khi cần đúng nó. `[nghề]`
 

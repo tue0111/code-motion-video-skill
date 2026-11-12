@@ -8,7 +8,7 @@ Bộ skill làm phim ngắn của T1 to 9, dùng cho Claude (plugin Cowork, acco
 | `code-motion-video` (phụ) | Video motion dựng hoàn toàn bằng code (HTML/SVG/Canvas/GSAP, HyperFrames, Remotion, p5), render từng khung ra MP4 | Explainer, kinetic type, product motion; hoặc khi `t1to9-film` cần beat grid, SFX, render code |
 | `film-craft` (kho kiến thức) | Tay nghề điện ảnh, quay phim, hoạt hoạ: vì sao làm vậy, viết gì vào prompt, soi gì trên strip | Hai skill trên cần quyết định một việc thuộc tay nghề; hoặc hỏi thẳng về nghề |
 
-## `film-craft` (v0.8.0)
+## `film-craft` (v0.8.1)
 
 Kho để tra, không phải quy trình. `SKILL.md` là bảng "đang cần gì thì mở file nào". Mỗi file có cùng khung: dùng khi nào, bảng quyết định kèm câu prompt zh-CN, bảng lỗi và cách sửa, hàng chờ thử.
 

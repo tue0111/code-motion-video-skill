@@ -44,7 +44,7 @@ Viết cho model:
 
 Trong motion code, nhoè là lấy mẫu nhiều thời điểm trong một khung rồi trộn. Lấy mẫu trải trên nửa khoảng thời gian của khung là tương đương 180°. `render.mjs` của `code-motion-video` có tuỳ chọn blur làm việc này; chữ cần đọc thì dùng `frameT` để không bị trộn.
 
-**Lia nhanh thì giật (strobing).** Lia hết bề ngang khung trong khoảng 5–7 giây thì không giật; ống dài và màn trập hẹp làm nặng thêm. `[sách]` Mercado, *The Filmmaker's Eye*, page_label 151 (kết quả search). Viết tốc độ lia bằng thời gian: `镜头缓慢向右摇，约六秒扫过画面宽度`. Nhanh hơn thì xin nhoè ngang hoặc chọn cắt. `[suy luận]`
+**Lia nhanh thì giật (strobing).** Lia hết bề ngang khung trong khoảng 5–7 giây thì không giật; ống dài và màn trập hẹp làm nặng thêm. `[sách]` Mercado, *The Filmmaker's Eye*, page_label 151. Viết tốc độ lia bằng thời gian: `镜头缓慢向右摇，约六秒扫过画面宽度`. Nhanh hơn thì xin nhoè ngang hoặc chọn cắt. `[suy luận]`
 
 Khi ghép clip i2v với lớp dựng bằng code, lượng nhoè hai bên phải khớp. Clip có nhoè mà chữ ký hay thẻ ảnh lướt vào sắc lẹm thì lộ ghép. `[suy luận]`
 
@@ -63,7 +63,7 @@ Với ảnh tĩnh, tiêu cự quyết định phối cảnh và độ nén. Khi 
 Vài cách dùng đáng nhớ:
 
 - **Muốn tốc độ:** góc rộng, máy thấp, có vật ở tiền cảnh lướt qua. Tele không cho cảm giác tốc độ dù vật đi nhanh. Ống ngắn làm người lao về máy nhanh hơn thật và phủ khung bằng tường. `[sách]` Kenworthy, *Master Shots*, page_label 35.
-- **Muốn nhân vật "kẹt":** tele, người đi về phía máy, nền nén sát sau lưng. Tele kéo hậu cảnh sát vào người, buộc người với nơi chốn; góc rộng đẩy nơi chốn ra xa và to hơn, tách người khỏi nó. `[sách]` Mercado, *The Filmmaker's Eye*, page_label 79. Cảm giác bị nhốt do tele nén: `[sách]` Pramaggiore & Wallis, *Film: A Critical Introduction*, page_label 181 (kết quả search).
+- **Muốn nhân vật "kẹt":** tele, người đi về phía máy, nền nén sát sau lưng. Tele kéo hậu cảnh sát vào người, buộc người với nơi chốn; góc rộng đẩy nơi chốn ra xa và to hơn, tách người khỏi nó. `[sách]` Mercado, *The Filmmaker's Eye*, page_label 79. Cảm giác bị nhốt do tele nén: `[sách]` Pramaggiore & Wallis, *Film: A Critical Introduction*, page_label 181.
 - **Muốn thân mật mà không méo:** 35–50 mm, máy cách một sải tay, tiến rất chậm.
 - **Muốn tách người khỏi đám đông:** tele bám theo ngang, nền và người qua lại thành vệt màu.
 
@@ -96,7 +96,7 @@ Dấu kiểm trên contact sheet: phòng hẹp dần, mở bung ở khung kết.
   Rủi ro: model đẩy máy thay vì đổi nét, hoặc làm cả hai cùng nét. Soi strip: cỡ của vật có đổi không. Đổi tức là máy đã chuyển động. `[suy luận]`
 - **Nét sâu cho cảnh có hai lớp hành động.** Khi tiền cảnh và hậu cảnh cùng kể chuyện, cả hai phải nét. Viết `前景和背景都清晰` và dùng góc rộng. `[nghề]`
 - **Điện thoại xoá nền mờ nhẹ.** Nền mờ ít trên màn hình nhỏ trông như lỗi nét. Đã mờ thì mờ rõ; không thì nét hẳn. `[suy luận]`
-- **Muốn nền mờ rõ thì dùng tele, không chỉ mở khẩu.** Cùng cỡ chủ thể, vùng nét gần như bằng nhau, nhưng tele kéo nền lại gần nên mờ thấy rõ hơn. `[sách]` Mercado, *The Filmmaker's Eye*, page_label 33 (kết quả search). Prompt: ghi `85mm长焦` kèm `背景明显虚化`, không chỉ `大光圈`.
+- **Muốn nền mờ rõ thì dùng tele, không chỉ mở khẩu.** Cùng cỡ chủ thể, vùng nét gần như bằng nhau, nhưng tele kéo nền lại gần nên mờ thấy rõ hơn. `[sách]` Mercado, *The Filmmaker's Eye*, page_label 33. Prompt: ghi `85mm长焦` kèm `背景明显虚化`, không chỉ `大光圈`.
 
 ## 5. Cách giữ máy là một giọng kể
 
@@ -137,7 +137,7 @@ Hạt, halation, tối góc: phủ một lần ở hậu kỳ cho cả phim, kh�
 
 - **Đi từ tối ra sáng hoặc ngược lại:** máy thật mất một nhịp để thích nghi, vùng sáng cháy rồi dịu lại. Đây là một cách vào cảnh mạnh: mở cửa ra nắng, khung cháy kem rồi hiện hình. Khớp với dấu nhấn "hiện ra từ khung cháy" trong `cut-grammar.md`. `[nghề]`
 - **Giữ phơi sáng cho mặt.** Ngược sáng thì mặt tối. Hoặc chấp nhận bóng đen có viền sáng, hoặc có nguồn hắt. Viết rõ chọn cái nào; không viết thì model nâng sáng đều và mất ngược sáng. `[suy luận]`
-- **Đèn nhấp nháy.** Đèn huỳnh quang, màn hình, đèn LED rẻ tạo sọc hoặc nháy khi quay thật. Trong phim sinh ra, nháy thường là lỗi của model; soi 8 khung liền ở vùng đèn. `[suy luận]` Quay thật TV đời cũ trong khung: hẹp góc màn trập (ví dụ 144° ở 24 fps) làm sọc cuộn chỉ còn vạch mảnh, đủ dùng khi màn hình ở hậu cảnh. `[sách]` Malkiewicz & Mullen, *Cinematography*, page_label 14 (kết quả search).
+- **Đèn nhấp nháy.** Đèn huỳnh quang, màn hình, đèn LED rẻ tạo sọc hoặc nháy khi quay thật. Trong phim sinh ra, nháy thường là lỗi của model; soi 8 khung liền ở vùng đèn. `[suy luận]` Quay thật TV đời cũ trong khung: hẹp góc màn trập (ví dụ 144° ở 24 fps) làm sọc cuộn chỉ còn vạch mảnh, đủ dùng khi màn hình ở hậu cảnh. `[sách]` Malkiewicz & Mullen, *Cinematography*, page_label 14.
 
 ## 8. Riêng cho 9:16 và phim ngắn
 
