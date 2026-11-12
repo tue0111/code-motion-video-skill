@@ -30,7 +30,7 @@ Skill này chỉ điều phối. Kiến thức nằm ở nguồn, nên phải tr
 | **G5** | Sửa vài lỗi lớn nhất, kèm thời điểm và lý do, chạy QA hồi quy | `references/qa.md` | before/after + QA |
 | **G6** | Tuệ xem/nghe đúng hash trên điện thoại và tai nghe | `references/qa.md` §giao | ghi nghiệm thu |
 
-Tuệ hỏi việc ở giữa chừng thì xác định cổng hiện tại từ thư mục phim (`docs/g0.md`, `shots.json`, `ledger.md`), không bắt đầu lại. Chi tiết từng cổng ở `references/gates.md`. Bài học từ phim trước ở `references/case-mua-he-cuoi-cap.md`.
+Tuệ hỏi việc ở giữa chừng thì xác định cổng hiện tại từ thư mục phim (`docs/g0.md`, `shots.json`, `ledger.md`), không bắt đầu lại. Chi tiết từng cổng ở `references/gates.md`. Bài học từ phim trước ở `references/case-mua-he-cuoi-cap.md` và `references/case-montage-anime-39s.md` (phòng và trang phục trôi giữa các shot, bỏ cổng duyệt ảnh).
 
 ## Luật cứng
 

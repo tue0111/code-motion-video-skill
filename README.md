@@ -8,7 +8,7 @@ Bộ skill làm phim ngắn của T1 to 9, dùng cho Claude (plugin Cowork, acco
 | `code-motion-video` (phụ) | Video motion dựng hoàn toàn bằng code (HTML/SVG/Canvas/GSAP, HyperFrames, Remotion, p5), render từng khung ra MP4 | Explainer, kinetic type, product motion; hoặc khi `t1to9-film` cần beat grid, SFX, render code |
 | `film-craft` (kho kiến thức) | Tay nghề điện ảnh, quay phim, hoạt hoạ: vì sao làm vậy, viết gì vào prompt, soi gì trên strip | Hai skill trên cần quyết định một việc thuộc tay nghề; hoặc hỏi thẳng về nghề |
 
-## `film-craft` (v0.7.0)
+## `film-craft` (v0.8.0)
 
 Kho để tra, không phải quy trình. `SKILL.md` là bảng "đang cần gì thì mở file nào". Mỗi file có cùng khung: dùng khi nào, bảng quyết định kèm câu prompt zh-CN, bảng lỗi và cách sửa, hàng chờ thử.
 
@@ -18,6 +18,8 @@ skills/film-craft/
   references/
     shot-and-coverage.md         cỡ cảnh, góc, trục 180°, đường nhìn, mẫu coverage, dàn người trong 9:16
     lens-and-camera.md           tốc độ khung, màn trập và nhoè, tiêu cự khi máy động, đổi nét, cách giữ máy
+    production-design.md         bối cảnh, đạo cụ, trang phục, màu mang nghĩa, tài sản chủ giữ phòng và áo qua các shot
+    director-approaches.md       các lối kể, mỗi lối là một bộ quyết định kỹ thuật
     light-in-motion.md           ánh sáng có nguồn gốc, khớp sáng giữa các shot, nguồn sáng di chuyển
     color-and-grade.md           color script, khớp màu clip i2v, thứ tự chỉnh màu, giao cho điện thoại
     editing.md                   điểm cắt, kiểu nối, đường mắt, nhịp, thời gian, dựng từ clip i2v
@@ -30,7 +32,7 @@ skills/film-craft/
     shooting-real.md             quay thật bằng máy và điện thoại, ghép với cảnh AI
 ```
 
-**Trạng thái:** viết ngày 2026-11-12 từ kiến thức nghề phổ biến, bằng lời của skill. Chưa có dòng nào được thử trên ảnh hay clip thật; mỗi file có mục "Hàng chờ thử". Luật cứng và gu đã chốt trong hai skill quy trình đứng trên kho này.
+**Trạng thái:** viết ngày 2026-11-12 từ kiến thức nghề phổ biến, bằng lời của skill, có đối chiếu sách qua MCP `film-library` ở những dòng mang nhãn `[sách]`. Chưa có dòng nào được thử trên ảnh hay clip thật; mỗi file có mục "Hàng chờ thử". Luật cứng và gu đã chốt trong hai skill quy trình đứng trên kho này.
 
 **Cài:** chép `skills/film-craft/` vào thư mục skills của Claude, cạnh hai skill kia (các file trỏ sang nhau bằng đường dẫn tương đối `../t1to9-film/…`).
 
@@ -44,7 +46,7 @@ Skill chỉ điều phối. Kiến thức nằm ở nguồn và skill dạy các
 skills/t1to9-film/
   SKILL.md                 bảng nguồn, cổng G0–G6, 9 luật cứng, giao thức chi tiền
   references/              sources, gates, g0-script, film-types (8 loại), camera-moves (46 chuyển động),
-                           prompts, cut-grammar, qa, case-mua-he-cuoi-cap
+                           prompts, cut-grammar, qa, case-mua-he-cuoi-cap, case-montage-anime-39s
   templates/               g0.md, shots.json, ledger.md, approvals.md, paths.example.md
   scripts/film_qa.py       lint, diff, ranges, color, loudness, freeze
   LICENSE                  MIT (chỉ chữ và code của skill)

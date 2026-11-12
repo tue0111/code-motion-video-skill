@@ -48,6 +48,21 @@ Trong cận mặt, mắt là chỗ quan trọng nhất; thiếu đốm sáng nh�
 
 Chặn diễn quá: `表情变化很小，面部其余部分保持不动`.
 
+**Cảm xúc bằng thân và nhịp.** Một cảm xúc là một thôi thúc đổi quan hệ của người với người khác hoặc với nơi chốn: tiến tới, rút lui, đứng khựng. Nó lộ ra qua dáng, chuyển động, rồi mới tới mặt; cảm xúc càng mạnh thì thôi thúc càng khó nén. `[sách]` Konijn, *Acting Emotions*, page_label 72–73. Toàn thân là cỡ cho kiểu diễn này. `[sách]` Katz, *Film Directing Shot by Shot*, page_label 167.
+
+Cách dùng: viết **thôi thúc, rồi chỗ nó bị kìm lại**. Thôi thúc bị kìm đọc mạnh hơn thôi thúc làm trọn. Bảng dưới là `[suy luận]`.
+
+| Cảm xúc | Thôi thúc | Thân và nhịp | Viết (zh-CN) | Dấu kiểm |
+|---|---|---|---|---|
+| Sợ | Rút lui | Trọng tâm lùi về gót, vai nhô lên, rồi khựng, một nhịp không động | `她重心退到脚跟，肩膀耸起，随后整个人僵住不动约一秒` | Có một quãng đứng yên sau cú rút |
+| Giận, bị nén | Tiến tới | Nửa bước tới rồi dừng, tay nắm lại ở cạnh thân, ngực phồng chậm | `他向前迈出半步后停住，右手在身侧慢慢握紧，胸口缓缓起伏` | Bước không trọn; tay không vung |
+| Buồn | Buông | Mọi khởi động trễ, đầu cúi trước vai, dừng không vượt | `她的动作都慢半拍，先低下头，肩膀随后下沉，停住时没有回弹` | Không có nảy hay vượt ở điểm dừng |
+| Nhớ, muốn | Hướng về vật | Tay đi tới vật rồi dừng cách một gang, thân nghiêng theo | `她伸手靠近桌上的旧照片，指尖在一掌之外停住，身体微微前倾` | Không chạm |
+| Ngại, xấu hổ | Thu nhỏ | Quay ba phần tư khỏi người kia, vai khép, tay tìm vạt áo | `她侧身转开，肩膀向内收，手指捏住衣角` | Mặt rời khỏi trục nhìn của người kia |
+| Nhẹ nhõm | Mở ra | Một hơi thở ra, vai rơi, đầu ngửa nhẹ | `她长长呼出一口气，肩膀落下，头微微后仰` | Vai thấp hơn khung đầu |
+
+Nhịp là nửa kia: cùng một cử động, trễ trước khi làm đọc là do dự, làm ngay đọc là bản năng. Chọn chỗ đặt khoảng giữ trước khi chọn động từ.
+
 ## 4. Tay
 
 `[nghề]`
@@ -97,6 +112,7 @@ Với i2v: chỉ cho thứ cấp với vật **đã có trong ảnh gốc**, ghi
 - **Nhịp so le:** B đáp A sau một khoảng nhỏ. Trễ dài đọc là do dự hoặc lạnh.
 - **Khoảng cách là quan hệ:** rút ngắn hay nới ra giữa hai khung là một beat.
 - **Chạm là đỉnh**, không phải mặc định. Trước chạm có một nhịp dừng.
+- **Không nhìn nhau vẫn nối nhau.** Một người tránh, quay lưng, bận tay; người kia đứng gần yên và xoay thân theo. Từ chối nhìn có khi giữ người xem hơn hai người đối mặt. `[sách]` Kenworthy, *Master Shots Vol. 2*, page_label 79–80. Dàn cảnh cụ thể ở `shot-and-coverage.md` §6.
 
 Với i2v: A làm, cắt sang B phản ứng, an toàn hơn một shot cả hai cùng cử động (§8.4). `[suy luận]`
 
@@ -157,6 +173,7 @@ Bổ sung cho `../../t1to9-film/references/qa.md` §i2v, chỉ phần diễn:
 - [ ] Tóc, vải dừng sau thân.
 - [ ] Hai tay không cùng góc ở cùng khung.
 - [ ] Mặt đổi đúng một chỗ.
+- [ ] Cảm xúc chính đọc được khi che mặt đi (chỉ nhìn thân và nhịp).
 - [ ] Khung cuối là golden pose; ghi `usable` tới đó.
 
 ## 9. Nhân vật dựng bằng code (mascot, rig SVG)
@@ -195,3 +212,4 @@ Hàm có sẵn ở `../../code-motion-video/lib/motion.js`. Đừng viết lại
 3. **Cười nhẹ.** `嘴角…不露齿` so với `微笑`. Khung cuối: lộ răng không, mặt còn là người cũ không.
 4. **Tay dừng trước khi chạm.** `指尖在信封上方停住` so với `拿起信封`. Crop tay: số ngón, vật đổi hình không.
 5. **Thứ cấp có hướng.** Ghi hướng gió và lúc dừng, so với `头发飘动`. Tóc dừng sau thân không, nhấp nháy không.
+6. **Thôi thúc bị kìm.** Toàn thân, một bản `他很生气`, một bản dòng "Giận, bị nén" ở §3. Che mặt trên strip: bản nào còn đọc ra giận, bản nào model phóng nét mặt.

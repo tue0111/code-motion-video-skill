@@ -13,6 +13,8 @@ Hai skill kia trả lời câu "làm theo thứ tự nào". Skill này trả l�
 |---|---|
 | Chọn cỡ cảnh, góc, độ cao máy. Chia một cảnh thành các shot. Giữ trục 180°, hướng nhìn, hướng đi giữa hai shot. Dàn người trong khung dọc | `references/shot-and-coverage.md` |
 | Tiêu cự khi máy chuyển động, tốc độ khung, góc màn trập và nhoè chuyển động, đổi nét, tính cách của tay cầm, gimbal, dolly, ống anamorphic | `references/lens-and-camera.md` |
+| Bối cảnh, đạo cụ, trang phục, màu mang nghĩa, chất liệu và tuổi của vật, thời kỳ. Giữ cùng một căn phòng và một bộ đồ qua nhiều shot | `references/production-design.md` |
+| Chọn lối kể cho cả phim: máy tĩnh khung như tranh, tiết chế, thời gian dài, hồi hộp bằng thông tin. Mỗi lối gồm những quyết định kỹ thuật nào | `references/director-approaches.md` |
 | Ánh sáng có nguồn gốc, khớp ánh sáng giữa các shot cùng cảnh, giờ trong ngày làm cấu trúc, nguồn sáng di chuyển, đêm còn đọc được | `references/light-in-motion.md` |
 | Bảng màu theo đoạn phim, khớp màu các clip sinh riêng, thứ tự chỉnh màu, hạt và bloom, giao cho điện thoại | `references/color-and-grade.md` |
 | Cắt ở đâu, nối kiểu gì, đường mắt qua chỗ cắt, nhịp, xử lý thời gian, dựng từ clip i2v | `references/editing.md` |
@@ -52,7 +54,7 @@ Thứ đã có ở chỗ khác thì không lặp ở đây:
 | `[suy luận]` | Phân tích của skill, nhất là mọi dự đoán model i2v phản ứng ra sao |
 | `[đã thử YYYY-MM-DD]` | Đã thấy trên ảnh hoặc clip thật của một phim, có ghi phim nào |
 
-Khi viết ra, **chưa có dòng nào mang nhãn đã thử**. Mọi câu prompt là giả thuyết cho tới khi một phim thật dùng nó. Mỗi file có mục "Hàng chờ thử" ở cuối; phim nào tiện thì thử một phép và ghi kết quả.
+Khi viết ra, **chưa có dòng nào mang nhãn đã thử**. Bài học từ phim thật nằm ở hai file case của `t1to9-film` (`../t1to9-film/references/case-mua-he-cuoi-cap.md`, `../t1to9-film/references/case-montage-anime-39s.md`). Mọi câu prompt là giả thuyết cho tới khi một phim thật dùng nó. Mỗi file có mục "Hàng chờ thử" ở cuối; phim nào tiện thì thử một phép và ghi kết quả.
 
 ## Thứ tự quyền khi mâu thuẫn
 
