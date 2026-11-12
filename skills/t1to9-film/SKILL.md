@@ -15,6 +15,7 @@ Skill này chỉ điều phối. Kiến thức nằm ở nguồn, nên phải tr
 | Style ảnh, cách viết prompt, chuyển động và chuyển cảnh | MCP VSC: `vsc_search` trước, chọn 3–5 mục, rồi mới `vsc_get_*`. Ghi tên tác giả khi mượn prompt |
 | Cấu trúc prompt zh-CN, validator, negative | `<T1_KNOWLEDGE>` (skill `t1-visual-prompt`, `tools/t1lint.py --no-brand`) |
 | Sinh video, nhạc, giọng | Nhà cung cấp mà Tuệ chọn (Sumi, Codex imagegen…). Có tốn tiền thì làm theo giao thức chi tiền ở dưới |
+| Tay nghề: cỡ cảnh và trục, tiêu cự, ánh sáng qua nhiều shot, màu, điểm cắt, âm thanh, hành động của nhân vật, lối hoạt hoạ, hiệu ứng | Skill `film-craft` (cùng repo, `../film-craft/SKILL.md`): tìm dòng trong bảng tra, đọc đúng một file. Câu prompt ở đó chưa thử; luật cứng ở dưới đứng trên |
 | Chọn giữa vài ứng viên đã soi | Jev (tùy chọn). Jev chỉ đọc mô tả, không nhìn pixel |
 
 ## Cổng: biết đang ở cổng nào thì chỉ đọc file của cổng đó

@@ -1,7 +1,7 @@
 {
   "name": "code-motion-video",
-  "version": "0.6.1",
-  "description": "Phim ngắn T1 to 9: t1to9-film (chính, ảnh → i2v → phim 9:16 qua cổng G0–G6) và code-motion-video (phụ, motion bằng code render ra MP4).",
+  "version": "0.7.0",
+  "description": "Phim ngắn T1 to 9: t1to9-film (chính, ảnh → i2v → phim 9:16 qua cổng G0–G6) code-motion-video (phụ, motion bằng code render ra MP4) và film-craft (kho kiến thức điện ảnh, quay phim, hoạt hoạ).",
   "author": {
     "name": "Tuệ"
   }

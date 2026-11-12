@@ -1,11 +1,40 @@
 # T1 to 9 film skills
 
-Bộ skill làm phim ngắn của T1 to 9, dùng cho Claude (plugin Cowork, account skill) và Codex. Repo có hai skill:
+Bộ skill làm phim ngắn của T1 to 9, dùng cho Claude (plugin Cowork, account skill) và Codex. Repo có ba skill: hai skill quy trình và một kho kiến thức.
 
 | Skill | Vai trò | Dùng khi |
 |---|---|---|
 | **`t1to9-film`** (chính) | Phim ngắn 9:16 dài 20–60 s từ ảnh sinh ra (image → i2v), đi qua cổng G0–G6: kịch bản, prompt, animatic, pilot, dựng, sửa, giao | Làm một phim T1 to 9 từ ý tưởng tới bản giao |
 | `code-motion-video` (phụ) | Video motion dựng hoàn toàn bằng code (HTML/SVG/Canvas/GSAP, HyperFrames, Remotion, p5), render từng khung ra MP4 | Explainer, kinetic type, product motion; hoặc khi `t1to9-film` cần beat grid, SFX, render code |
+| `film-craft` (kho kiến thức) | Tay nghề điện ảnh, quay phim, hoạt hoạ: vì sao làm vậy, viết gì vào prompt, soi gì trên strip | Hai skill trên cần quyết định một việc thuộc tay nghề; hoặc hỏi thẳng về nghề |
+
+## `film-craft` (v0.7.0)
+
+Kho để tra, không phải quy trình. `SKILL.md` là bảng "đang cần gì thì mở file nào". Mỗi file có cùng khung: dùng khi nào, bảng quyết định kèm câu prompt zh-CN, bảng lỗi và cách sửa, hàng chờ thử.
+
+```
+skills/film-craft/
+  SKILL.md                       bảng tra, nhãn độ tin, thứ tự quyền
+  references/
+    shot-and-coverage.md         cỡ cảnh, góc, trục 180°, đường nhìn, mẫu coverage, dàn người trong 9:16
+    lens-and-camera.md           tốc độ khung, màn trập và nhoè, tiêu cự khi máy động, đổi nét, cách giữ máy
+    light-in-motion.md           ánh sáng có nguồn gốc, khớp sáng giữa các shot, nguồn sáng di chuyển
+    color-and-grade.md           color script, khớp màu clip i2v, thứ tự chỉnh màu, giao cho điện thoại
+    editing.md                   điểm cắt, kiểu nối, đường mắt, nhịp, thời gian, dựng từ clip i2v
+    sound-design.md              lớp âm, im lặng, điểm đồng bộ, SFX, nhạc, mix cho loa điện thoại
+    animation-principles.md      timing và spacing, 12 nguyên lý thành việc làm, on twos, hành động theo pha
+    character-animation.md       pose, sức nặng, mắt đi trước thân, dáng đi, hành động cho i2v
+    animation-styles.md          cel, anime hạn chế, cut-out, stop-motion, 3D cách điệu, tranh động
+    fx-animation.md              khói, lửa, nước, gió, tia, cú va chạm và impact frame
+    compositing-2.5d.md          tách lớp, parallax, chiều sâu giả, rung máy có seed
+    shooting-real.md             quay thật bằng máy và điện thoại, ghép với cảnh AI
+```
+
+**Trạng thái:** viết ngày 2026-11-12 từ kiến thức nghề phổ biến, bằng lời của skill. Chưa có dòng nào được thử trên ảnh hay clip thật; mỗi file có mục "Hàng chờ thử". Luật cứng và gu đã chốt trong hai skill quy trình đứng trên kho này.
+
+**Cài:** chép `skills/film-craft/` vào thư mục skills của Claude, cạnh hai skill kia (các file trỏ sang nhau bằng đường dẫn tương đối `../t1to9-film/…`).
+
+Kiểm đường dẫn trong tài liệu: `python tests/check_links.py`.
 
 ## `t1to9-film`
 

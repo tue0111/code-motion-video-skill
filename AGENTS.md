@@ -1,8 +1,9 @@
 # Hướng dẫn cho Codex / agent khác
 
-Repo có hai skill. Chọn đúng skill trước khi làm:
+Repo có ba skill. Hai skill đầu là quy trình, skill thứ ba là kho kiến thức để tra. Chọn đúng skill trước khi làm:
 - Phim ngắn T1 to 9 từ ảnh sinh ra (image → i2v, 9:16, 20–60 s): đọc `skills/t1to9-film/SKILL.md`, rồi chỉ đọc file của cổng đang làm. Chưa có G0 được duyệt thì không viết prompt ảnh. Đường dẫn trên máy nằm trong `skills/t1to9-film/paths.local.md`; thiếu thì hỏi.
 - Video motion dựng bằng code: làm theo các bước dưới.
+- Cần tay nghề điện ảnh, quay phim hay hoạt hoạ (cỡ cảnh và trục, tiêu cự và tốc độ khung, ánh sáng qua nhiều shot, màu, dựng, âm thanh, nguyên lý hoạt hoạ, diễn xuất nhân vật, lối hoạt hoạ, hiệu ứng, ghép lớp, quay thật): mở `skills/film-craft/SKILL.md`, tìm đúng dòng trong bảng tra, chỉ đọc file đó. Mọi câu prompt trong kho này chưa thử; luật cứng và gu đã chốt của hai skill quy trình đứng trên nó.
 
 ## code-motion-video
 

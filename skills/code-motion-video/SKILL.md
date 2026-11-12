@@ -97,6 +97,7 @@ Cần agent có shell (Claude Code / Codex / Cowork) để render và tự nhìn
 
 | File | Đọc khi |
 |---|---|
+| `../film-craft/SKILL.md` | Cần tay nghề nền: nguyên lý hoạt hoạ và timing, diễn xuất nhân vật, lối hoạt hoạ, hiệu ứng, ghép lớp 2.5D, shot và trục, âm thanh, màu. Kho để tra, mở đúng một file theo bảng trong đó |
 | `references/film-types.md` | **G0:** chọn loại phim (TVC, demo app/web, explainer, launch trailer, social short 9:16, manifesto, MV, recap, data film, UGC montage, case study): biết–cảm–làm, hook, chất liệu, cấu trúc 15/30/60 s, khi nào KHÔNG chọn |
 | `references/director-mindset.md` | **Đọc trước style và mỗi lần review:** checklist một trang, 15 nguyên tắc đạo diễn + câu hỏi cuối |
 | `references/dryrun-g0-examples.md` | Ví dụ đã chạy thử G0 trên ba brief ngắn (app AI 30 s, MV lo-fi 60 s, quán cà phê 9:16 15 s): type, câu hỏi giây 5, beat sheet, chỗ skill không dẫn đủ, điểm dừng |
