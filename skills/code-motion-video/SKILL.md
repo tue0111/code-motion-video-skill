@@ -23,7 +23,7 @@ Khung 240 phải render được trực tiếp, không cần phát lại 0–239
 
 ```
 DIRECTOR   phim nói gì, người xem nhớ một câu gì
-REFERENCE  trông/cảm thấy thế nào → style-guide.md
+REFERENCE  trông/cảm thấy thế nào → style-guide.md (có `vsc_*` thì tra VSC, xem references/vsc-lookup.md)
 TIMELINE   mỗi beat đổi gì → shotlist.md, reads, beat grid
 RENDERER   mỗi khung tạo ra thế nào → code seekable + deterministic
 CRITIC     lỗi gì, khung nào, vì sao, sửa biến nào
@@ -111,6 +111,7 @@ Cần agent có shell (Claude Code / Codex / Cowork) để render và tự nhìn
 | `references/brief-and-shotlist.md` | Viết brief 8 mục, style guide, shotlist, reads |
 | `references/motion-language.md` | Thiết kế chuyển động, vật lý, ánh sáng, nhóm đối tượng |
 | `references/camera-moves.md` | Chọn và code 17 chuyển động camera (dolly/zoom/truck/orbit/whip…), viết camera cho prompt model video |
+| `references/vsc-lookup.md` | Phiên có tool `vsc_*`: tra Vibe Shot Club (cú máy, động tác, phong cách, prompt model video) lúc làm; cách chuyển sang style guide, shotlist, code; không chép vào repo |
 | `references/visual-hierarchy-631.md` | Bố cục, màu, ánh sáng, mật độ chi tiết theo 6:3:1; thumbnail test; khung prompt cảnh |
 | `references/film-grounding.md` | Chỉ mục cơ chế staging/G0/G3 theo mã thẻ + nhãn sách (UNTESTED), điều kiện, cụm M01–M08 cần chuỗi; không đổi gate |
 | `references/audio-timing.md` | Voice, MV, BPM ↔ fps, SFX |

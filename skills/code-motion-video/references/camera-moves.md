@@ -2,6 +2,8 @@
 
 Nguồn ý tưởng: 南鸢 nuyoah, "AI 视频怎么运镜？17 个摄影机运动" (30/09/2026). Phần ánh xạ sang code là của skill này.
 
+Có tool `vsc_*` thì kho 动作运镜库 của Vibe Shot Club có video mẫu cho từng cú máy (CAM-…); tra theo `vsc-lookup.md`, rồi vẫn viết lại theo 5 mục dưới đây.
+
 ## Luật viết một cú máy (dùng cho cả code lẫn prompt model video)
 
 Một từ như "camera di chuyển chậm" không đủ. Mỗi cú máy phải ghi:

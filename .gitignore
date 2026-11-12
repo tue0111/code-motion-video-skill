@@ -3,3 +3,4 @@ out/
 qa/
 paths.local.md
 __pycache__/
+Claude outputs/
